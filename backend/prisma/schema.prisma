@@ -1,0 +1,192 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AuthUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  avatar    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Wellness data relationships
+  healthMetrics HealthMetric[]
+  workouts      Workout[]
+  sleepRecords  SleepRecord[]
+  moodEntries   MoodEntry[]
+  goals         Goal[]
+
+  @@map("users")
+}
+
+model HealthMetric {
+  id        String   @id @default(cuid())
+  userId    String
+  type      MetricType
+  value     Float
+  unit      String
+  date      DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("health_metrics")
+}
+
+model Workout {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  type        WorkoutType
+  duration    Int      // in minutes
+  calories    Int?
+  notes       String?
+  date        DateTime
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("workouts")
+}
+
+model SleepRecord {
+  id          String   @id @default(cuid())
+  userId      String
+  bedtime     DateTime
+  wakeTime    DateTime
+  duration    Float    // in hours
+  quality     SleepQuality
+  notes       String?
+  createdAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sleep_records")
+}
+
+model MoodEntry {
+  id        String   @id @default(cuid())
+  userId    String
+  mood      MoodLevel
+  energy    EnergyLevel
+  stress    StressLevel
+  notes     String?
+  date      DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("mood_entries")
+}
+
+model Goal {
+  id          String     @id @default(cuid())
+  userId      String
+  title       String
+  description String?
+  type        GoalType
+  target      Float
+  current     Float      @default(0)
+  unit        String
+  deadline    DateTime?
+  status      GoalStatus @default(ACTIVE)
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("goals")
+}
+
+// Enums
+enum MetricType {
+  WEIGHT
+  HEIGHT
+  BLOOD_PRESSURE
+  HEART_RATE
+  BODY_FAT
+  MUSCLE_MASS
+  WATER_INTAKE
+  STEPS
+}
+
+enum WorkoutType {
+  CARDIO
+  STRENGTH
+  FLEXIBILITY
+  YOGA
+  PILATES
+  SWIMMING
+  RUNNING
+  CYCLING
+  WALKING
+  OTHER
+}
+
+enum SleepQuality {
+  POOR
+  FAIR
+  GOOD
+  EXCELLENT
+}
+
+enum MoodLevel {
+  VERY_LOW
+  LOW
+  NEUTRAL
+  GOOD
+  VERY_GOOD
+}
+
+enum EnergyLevel {
+  VERY_LOW
+  LOW
+  MODERATE
+  HIGH
+  VERY_HIGH
+}
+
+enum StressLevel {
+  VERY_LOW
+  LOW
+  MODERATE
+  HIGH
+  VERY_HIGH
+}
+
+enum GoalType {
+  WEIGHT_LOSS
+  WEIGHT_GAIN
+  FITNESS
+  NUTRITION
+  SLEEP
+  MINDFULNESS
+  OTHER
+}
+
+enum GoalStatus {
+  ACTIVE
+  COMPLETED
+  PAUSED
+  CANCELLED
+}
+
