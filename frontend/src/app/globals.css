@@ -6,6 +6,9 @@
 }
 
 @theme {
+    --breakpoint-tablet: 1100px;
+    --breakpoint-lg: 1366px;
+
     --color-primary: rgb(110 125 251);
     --color-accent: rgb(126 210 188);
 }

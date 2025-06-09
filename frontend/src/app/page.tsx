@@ -1,58 +1,35 @@
+import Button from "@/components/common/Button";
 import Image from "next/image";
+import landingPageImage from "@/assets/landing-page.jpg";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+    return (
+        <div className="flex justify-center items-start md:items-center h-full pt-[160px] md:pt-0">
+            <main className="flex flex-col md:grid md:grid-cols-2 gap-12 w-full max-w-[85%] lg:max-w-[1200px]">
+                <div className="flex flex-col justify-center items-start gap-4">
+                    <h1 className="text-4xl font-bold">
+                        Track your wellness journey and achieve health goals
+                    </h1>
+                    <h3 className="text-xl font-medium">
+                        Gain insights into your mood, sleep, and habits , and
+                        take control of your overall well-being with
+                        personalized recommendations
+                    </h3>
+                    <Button
+                        variant="primary-filled"
+                        className="text-lg font-semibold text-white px-4 py-2 rounded-xl cursor-pointer"
+                    >
+                        Get Started
+                    </Button>
+                </div>
+                <div className="flex justify-center items-center">
+                    <Image
+                        src={landingPageImage}
+                        alt="Landing Page Image"
+                        className="w-[400px] md:w-auto"
+                    />
+                </div>
+            </main>
+        </div>
+    );
 }

@@ -4,8 +4,8 @@ import ActionButtons from "./components/ActionButtons";
 
 const Navbar = () => {
     return (
-        <header className="flex justify-center items-center py-5 bg-gray-100 shadow-md text-black">
-            <div className="flex items-center justify-between w-full max-w-[1200px]">
+        <header className="fixed top-0 w-full flex justify-center items-center py-5 bg-gray-100 shadow-md text-black">
+            <div className="flex items-center justify-between w-full max-w-[85%] lg:max-w-[1200px]">
                 <h1 className="text-3xl font-bold">Wellness</h1>
                 {/* <Search /> */}
                 <ActionButtons />
