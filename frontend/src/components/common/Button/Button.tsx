@@ -15,8 +15,8 @@ type ButtonProps = {
 
 const primaryFilled = "bg-primary bg-primary hover:bg-primary/90";
 const primaryOutlined = "border border-primary hover:bg-primary/90";
-const secondaryFilled = "bg-secondary bg-secondary hover:bg-secondary/90";
-const secondaryOutlined = "border border-secondary hover:bg-secondary/90";
+const secondaryFilled = "bg-accent bg-accent hover:bg-accent/90";
+const secondaryOutlined = "border border-accent hover:bg-accent/90";
 
 const variants = {
     "primary-filled": primaryFilled,

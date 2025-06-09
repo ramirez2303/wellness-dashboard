@@ -3,18 +3,24 @@ import React from "react";
 
 const ActionButtons = () => {
     return (
-        <div className="flex justify-end items-center gap-4">
+        <div className="flex justify-end items-center gap-2">
             <Button
-                variant="primary-filled"
-                className="text-lg font-medium text-white px-6 py-1 rounded-md cursor-pointer"
+                variant="none"
+                className="text-lg font-medium text-black px-4 py-1 cursor-pointer"
             >
-                Login
+                Home
             </Button>
             <Button
-                variant="primary-filled"
-                className="text-lg font-medium text-white px-6 py-1 rounded-md cursor-pointer"
+                variant="none"
+                className="text-lg font-medium text-black px-4 py-1 cursor-pointer"
             >
-                Register
+                About
+            </Button>
+            <Button
+                variant="none"
+                className="text-lg font-medium text-black px-4 py-1 cursor-pointer"
+            >
+                Login
             </Button>
         </div>
     );
