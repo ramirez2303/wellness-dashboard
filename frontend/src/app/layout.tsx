@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import { Outfit } from "next/font/google";
+import ReactQueryProvider from "@/lib/ReactQueryProvider";
 
 const outfit = Outfit({
     subsets: ["latin"],
@@ -21,8 +22,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${outfit.variable} font-outfit h-[100vh]`}>
-                <Navbar />
-                {children}
+                <ReactQueryProvider>
+                    <Navbar />
+                    {children}
+                </ReactQueryProvider>
             </body>
         </html>
     );

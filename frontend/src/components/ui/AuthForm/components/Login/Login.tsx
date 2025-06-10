@@ -1,28 +1,45 @@
 import { routes } from "@/app/utils/routes";
 import Button from "@/components/common/Button";
 import Input from "@/components/common/Input";
+import { useLoginUser } from "@/hooks/useLoginUser";
 import Link from "next/link";
-import React, { Fragment } from "react";
+import React from "react";
 
 const Login = () => {
+    const { register, handleFormSubmit, errors, submitDisabled } =
+        useLoginUser();
     return (
-        <Fragment>
-            <div className="flex flex-col gap-6">
-                <Input label={{ text: "Mail" }} required />
-                <Input label={{ text: "Password" }} required />
+        <form onSubmit={handleFormSubmit}>
+            <div className="flex flex-col gap-1">
+                <Input
+                    id="email"
+                    type="email"
+                    label={{ text: "Mail" }}
+                    required
+                    placeholder="Enter your email"
+                    {...register("email")}
+                    error={errors.email}
+                />
+                <Input
+                    id="password"
+                    type="password"
+                    label={{ text: "Password" }}
+                    required
+                    placeholder="Enter your password"
+                    {...register("password")}
+                    error={errors.password}
+                />
             </div>
 
             <Button
                 variant="primary-filled"
                 type="submit"
-                className="text-white text-lg font-bold w-full py-2 rounded-lg mt-10 cursor-pointer"
-                onClick={(e) => {
-                    e.preventDefault();
-                }}
+                className="text-white text-lg font-bold w-full py-2 rounded-lg mt-6 cursor-pointer"
+                disabled={submitDisabled}
             >
                 Login
             </Button>
-            <div className="flex flex-col items-center mt-8 gap-2">
+            <div className="flex flex-col items-center mt-8 gap-1">
                 <Link href={routes.register}>
                     <Button
                         variant="none"
@@ -43,7 +60,7 @@ const Login = () => {
                     ?
                 </span>
             </div>
-        </Fragment>
+        </form>
     );
 };
 

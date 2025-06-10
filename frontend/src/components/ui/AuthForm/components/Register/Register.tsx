@@ -1,25 +1,58 @@
 import { routes } from "@/app/utils/routes";
 import Button from "@/components/common/Button";
 import Input from "@/components/common/Input";
+import { useRegisterUser } from "@/hooks/useRegisterUser";
 import Link from "next/link";
-import React, { Fragment } from "react";
+import React from "react";
 
 const Register = () => {
+    const { register, handleFormSubmit, errors, submitDisabled } =
+        useRegisterUser();
     return (
-        <Fragment>
-            <div className="flex flex-col gap-4">
-                <Input label={{ text: "Username" }} required />
-                <Input label={{ text: "Password" }} required />
-                <Input label={{ text: "Confirm Password" }} required />
-                <Input label={{ text: "Mail" }} required />
+        <form onSubmit={handleFormSubmit}>
+            <div className="flex flex-col gap-1">
+                <Input
+                    id="email"
+                    type="email"
+                    label={{ text: "Mail" }}
+                    required
+                    placeholder="Enter your email"
+                    {...register("email")}
+                    error={errors.email}
+                />
+                <Input
+                    id="password"
+                    type="password"
+                    label={{ text: "Password" }}
+                    required
+                    placeholder="Enter your password"
+                    {...register("password")}
+                    error={errors.password}
+                />
+                <Input
+                    id="firstname"
+                    type="text"
+                    label={{ text: "Firstname" }}
+                    required
+                    placeholder="Enter your firstname"
+                    {...register("firstname")}
+                    error={errors.firstname}
+                />
+                <Input
+                    id="lastname"
+                    type="text"
+                    label={{ text: "Lastname" }}
+                    required
+                    placeholder="Enter your lastname"
+                    {...register("lastname")}
+                    error={errors.lastname}
+                />
             </div>
             <Button
                 variant="primary-filled"
                 type="submit"
                 className="text-white text-lg font-bold w-full py-2 rounded-lg mt-8 cursor-pointer"
-                onClick={(e) => {
-                    e.preventDefault();
-                }}
+                disabled={submitDisabled}
             >
                 Register
             </Button>
@@ -36,7 +69,7 @@ const Register = () => {
                     </Link>
                 </span>
             </div>
-        </Fragment>
+        </form>
     );
 };
 

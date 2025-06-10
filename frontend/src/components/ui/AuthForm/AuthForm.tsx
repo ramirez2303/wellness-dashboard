@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { Fragment } from "react";
 import Login from "./components/Login";
 import Register from "./components/Register";
 
@@ -9,10 +9,10 @@ type AuthFormProps = {
 
 const AuthForm = ({ type }: AuthFormProps) => {
     return (
-        <form>
+        <Fragment>
             {type === "login" && <Login />}
             {type === "register" && <Register />}
-        </form>
+        </Fragment>
     );
 };
 

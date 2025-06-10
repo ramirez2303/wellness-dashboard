@@ -1,12 +1,15 @@
+import { UserLogin, UserRegister } from "@/types/User";
 import axios from "axios";
 
-const API = "http://localhost:4000/api/auth";
+const authApi = axios.create({
+    baseURL: "http://localhost:4000/api/auth",
+});
 
-export const register = (data: { username: string; password: string }) =>
-    axios.post(`${API}/register`, data);
+export const register = (data: UserRegister) => authApi.post(`/register`, data);
 
-export const login = (data: { username: string; password: string }) =>
-    axios.post(`${API}/login`, data);
+export const login = (data: UserLogin) => authApi.post(`/login`, data);
 
-export const getProfile = (token: string) =>
-    axios.get(`${API}`, { headers: { Authorization: `Bearer ${token}` } });
+export const getProfile = async (token: string) =>
+    await authApi.get("/profile", {
+        headers: { Authorization: `Bearer ${token}` },
+    });

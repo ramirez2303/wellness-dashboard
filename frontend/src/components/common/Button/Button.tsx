@@ -11,6 +11,7 @@ type ButtonProps = {
         | "secondary-filled"
         | "secondary-outlined"
         | "none";
+    disabled?: boolean;
 };
 
 const primaryFilled = "bg-primary bg-primary hover:bg-primary/90";
@@ -32,12 +33,15 @@ const Button = ({
     onClick,
     type = "button",
     variant,
+    disabled,
 }: ButtonProps) => {
     return (
         <button
-            className={`${
-                !variant ? variants["none"] : variants[variant]
-            } ${className} duration-300 ease-in-out`}
+            className={`
+            ${disabled ? "opacity-50 pointer-events-none select-none" : ""}
+                ${
+                    !variant ? variants["none"] : variants[variant]
+                } ${className} duration-300 ease-in-out`}
             onClick={onClick}
             type={type}
         >
