@@ -1627,18 +1627,24 @@ export namespace Prisma {
   export type AuthUserMinAggregateOutputType = {
     id: string | null
     email: string | null
+    firstname: string | null
+    lastname: string | null
     passwordHash: string | null
   }
 
   export type AuthUserMaxAggregateOutputType = {
     id: string | null
     email: string | null
+    firstname: string | null
+    lastname: string | null
     passwordHash: string | null
   }
 
   export type AuthUserCountAggregateOutputType = {
     id: number
     email: number
+    firstname: number
+    lastname: number
     passwordHash: number
     _all: number
   }
@@ -1647,18 +1653,24 @@ export namespace Prisma {
   export type AuthUserMinAggregateInputType = {
     id?: true
     email?: true
+    firstname?: true
+    lastname?: true
     passwordHash?: true
   }
 
   export type AuthUserMaxAggregateInputType = {
     id?: true
     email?: true
+    firstname?: true
+    lastname?: true
     passwordHash?: true
   }
 
   export type AuthUserCountAggregateInputType = {
     id?: true
     email?: true
+    firstname?: true
+    lastname?: true
     passwordHash?: true
     _all?: true
   }
@@ -1738,6 +1750,8 @@ export namespace Prisma {
   export type AuthUserGroupByOutputType = {
     id: string
     email: string
+    firstname: string
+    lastname: string
     passwordHash: string
     _count: AuthUserCountAggregateOutputType | null
     _min: AuthUserMinAggregateOutputType | null
@@ -1761,28 +1775,36 @@ export namespace Prisma {
   export type AuthUserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
+    firstname?: boolean
+    lastname?: boolean
     passwordHash?: boolean
   }, ExtArgs["result"]["authUser"]>
 
   export type AuthUserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
+    firstname?: boolean
+    lastname?: boolean
     passwordHash?: boolean
   }, ExtArgs["result"]["authUser"]>
 
   export type AuthUserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
+    firstname?: boolean
+    lastname?: boolean
     passwordHash?: boolean
   }, ExtArgs["result"]["authUser"]>
 
   export type AuthUserSelectScalar = {
     id?: boolean
     email?: boolean
+    firstname?: boolean
+    lastname?: boolean
     passwordHash?: boolean
   }
 
-  export type AuthUserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "passwordHash", ExtArgs["result"]["authUser"]>
+  export type AuthUserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "firstname" | "lastname" | "passwordHash", ExtArgs["result"]["authUser"]>
 
   export type $AuthUserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "AuthUser"
@@ -1790,6 +1812,8 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       email: string
+      firstname: string
+      lastname: string
       passwordHash: string
     }, ExtArgs["result"]["authUser"]>
     composites: {}
@@ -2216,6 +2240,8 @@ export namespace Prisma {
   interface AuthUserFieldRefs {
     readonly id: FieldRef<"AuthUser", 'String'>
     readonly email: FieldRef<"AuthUser", 'String'>
+    readonly firstname: FieldRef<"AuthUser", 'String'>
+    readonly lastname: FieldRef<"AuthUser", 'String'>
     readonly passwordHash: FieldRef<"AuthUser", 'String'>
   }
     
@@ -9476,6 +9502,8 @@ export namespace Prisma {
   export const AuthUserScalarFieldEnum: {
     id: 'id',
     email: 'email',
+    firstname: 'firstname',
+    lastname: 'lastname',
     passwordHash: 'passwordHash'
   };
 
@@ -9774,12 +9802,16 @@ export namespace Prisma {
     NOT?: AuthUserWhereInput | AuthUserWhereInput[]
     id?: StringFilter<"AuthUser"> | string
     email?: StringFilter<"AuthUser"> | string
+    firstname?: StringFilter<"AuthUser"> | string
+    lastname?: StringFilter<"AuthUser"> | string
     passwordHash?: StringFilter<"AuthUser"> | string
   }
 
   export type AuthUserOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
+    firstname?: SortOrder
+    lastname?: SortOrder
     passwordHash?: SortOrder
   }
 
@@ -9789,12 +9821,16 @@ export namespace Prisma {
     AND?: AuthUserWhereInput | AuthUserWhereInput[]
     OR?: AuthUserWhereInput[]
     NOT?: AuthUserWhereInput | AuthUserWhereInput[]
+    firstname?: StringFilter<"AuthUser"> | string
+    lastname?: StringFilter<"AuthUser"> | string
     passwordHash?: StringFilter<"AuthUser"> | string
   }, "id" | "email">
 
   export type AuthUserOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
+    firstname?: SortOrder
+    lastname?: SortOrder
     passwordHash?: SortOrder
     _count?: AuthUserCountOrderByAggregateInput
     _max?: AuthUserMaxOrderByAggregateInput
@@ -9807,6 +9843,8 @@ export namespace Prisma {
     NOT?: AuthUserScalarWhereWithAggregatesInput | AuthUserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"AuthUser"> | string
     email?: StringWithAggregatesFilter<"AuthUser"> | string
+    firstname?: StringWithAggregatesFilter<"AuthUser"> | string
+    lastname?: StringWithAggregatesFilter<"AuthUser"> | string
     passwordHash?: StringWithAggregatesFilter<"AuthUser"> | string
   }
 
@@ -10263,42 +10301,56 @@ export namespace Prisma {
   export type AuthUserCreateInput = {
     id?: string
     email: string
+    firstname: string
+    lastname: string
     passwordHash: string
   }
 
   export type AuthUserUncheckedCreateInput = {
     id?: string
     email: string
+    firstname: string
+    lastname: string
     passwordHash: string
   }
 
   export type AuthUserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    firstname?: StringFieldUpdateOperationsInput | string
+    lastname?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type AuthUserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    firstname?: StringFieldUpdateOperationsInput | string
+    lastname?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type AuthUserCreateManyInput = {
     id?: string
     email: string
+    firstname: string
+    lastname: string
     passwordHash: string
   }
 
   export type AuthUserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    firstname?: StringFieldUpdateOperationsInput | string
+    lastname?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type AuthUserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
+    firstname?: StringFieldUpdateOperationsInput | string
+    lastname?: StringFieldUpdateOperationsInput | string
     passwordHash?: StringFieldUpdateOperationsInput | string
   }
 
@@ -10811,18 +10863,24 @@ export namespace Prisma {
   export type AuthUserCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
+    firstname?: SortOrder
+    lastname?: SortOrder
     passwordHash?: SortOrder
   }
 
   export type AuthUserMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
+    firstname?: SortOrder
+    lastname?: SortOrder
     passwordHash?: SortOrder
   }
 
   export type AuthUserMinOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
+    firstname?: SortOrder
+    lastname?: SortOrder
     passwordHash?: SortOrder
   }
 

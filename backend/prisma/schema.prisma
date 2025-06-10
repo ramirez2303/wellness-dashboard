@@ -17,6 +17,8 @@ datasource db {
 model AuthUser {
   id           String   @id @default(cuid())
   email        String   @unique
+  firstname    String
+  lastname     String
   passwordHash String
 }
 

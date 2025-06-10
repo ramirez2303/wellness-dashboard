@@ -1,3 +1,6 @@
+import { z } from "zod";
+import { loginSchema, registerSchema } from "../schemas/authSchema";
+
 export interface AuthUser {
     id: string;
     email: string;
@@ -10,3 +13,6 @@ export interface User {
     username: string;
     createdAt: Date;
 }
+
+export type RegisterPropsType = z.infer<typeof registerSchema>;
+export type LoginPropsType = z.infer<typeof loginSchema>;
