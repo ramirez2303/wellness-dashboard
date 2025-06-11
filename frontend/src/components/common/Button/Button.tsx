@@ -8,23 +8,10 @@ type ButtonProps = {
     variant?:
         | "primary-filled"
         | "primary-outlined"
-        | "secondary-filled"
-        | "secondary-outlined"
+        | "accent-filled"
+        | "accent-outlined"
         | "none";
     disabled?: boolean;
-};
-
-const primaryFilled = "bg-primary bg-primary hover:bg-primary/90";
-const primaryOutlined = "border border-primary hover:bg-primary/90";
-const secondaryFilled = "bg-accent bg-accent hover:bg-accent/90";
-const secondaryOutlined = "border border-accent hover:bg-accent/90";
-
-const variants = {
-    "primary-filled": primaryFilled,
-    "primary-outlined": primaryOutlined,
-    "secondary-filled": secondaryFilled,
-    "secondary-outlined": secondaryOutlined,
-    none: "",
 };
 
 const Button = ({
@@ -35,6 +22,22 @@ const Button = ({
     variant,
     disabled,
 }: ButtonProps) => {
+    const primaryFilled =
+        "bg-custom-primary bg-custom-primary hover:bg-custom-primary/90";
+    const primaryOutlined =
+        "border border-custom-primary hover:bg-custom-primary/90";
+    const accentFilled =
+        "bg-custom-accent bg-custom-accent hover:bg-custom-accent/90";
+    const accentOutlined =
+        "border border-custom-accent hover:bg-custom-accent/90";
+
+    const variants = {
+        "primary-filled": primaryFilled,
+        "primary-outlined": primaryOutlined,
+        "accent-filled": accentFilled,
+        "accent-outlined": accentOutlined,
+        none: "",
+    };
     return (
         <button
             className={`

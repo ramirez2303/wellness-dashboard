@@ -18,10 +18,14 @@ export function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL("/login", request.url));
     }
 
+    if (!isProtected && token) {
+        return NextResponse.redirect(new URL("/dashboard", request.url));
+    }
+
     return NextResponse.next();
 }
 
 // Este middleware se ejecuta solo en estas rutas:
 export const config = {
-    matcher: ["/dashboard/:path*", "/dashboard"],
+    matcher: ["/dashboard/:path*", "/dashboard", "/login", "/register", "/"],
 };

@@ -62,7 +62,7 @@ const Register = () => {
                     <Link href={routes.login}>
                         <Button
                             variant="none"
-                            className="text-primary hover:text-primary/80 underline cursor-pointer"
+                            className="text-custom-primary hover:text-custom-primary/80 underline cursor-pointer"
                         >
                             Log In
                         </Button>

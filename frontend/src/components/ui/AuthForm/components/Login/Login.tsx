@@ -43,7 +43,7 @@ const Login = () => {
                 <Link href={routes.register}>
                     <Button
                         variant="none"
-                        className="text-primary hover:text-primary/80 underline cursor-pointer"
+                        className="text-custom-primary hover:text-custom-primary/80 underline cursor-pointer"
                     >
                         Register a new account
                     </Button>
@@ -53,7 +53,7 @@ const Login = () => {
                     need{" "}
                     <Button
                         variant="none"
-                        className="text-primary hover:text-primary/80 underline cursor-pointer"
+                        className="text-custom-primary hover:text-custom-primary/80 underline cursor-pointer"
                     >
                         recover your password
                     </Button>

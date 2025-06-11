@@ -26,6 +26,7 @@ export const useLoginUser = () => {
             const { token, ...user } = data.data;
 
             setCookie("token", token);
+            localStorage.setItem("token", token);
 
             setUser(user);
 
