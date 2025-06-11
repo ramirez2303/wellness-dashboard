@@ -19,7 +19,8 @@ export const registerUser = async (data: RegisterPropsType) => {
     const user = await prisma.authUser.create({
         data: { id: generateId(), email, passwordHash, firstname, lastname },
     });
-    return { ...user, token: signToken({ id: user.id }) };
+    const { passwordHash: filteredPasswordHash, ...returnedUser } = user;
+    return { ...returnedUser, token: signToken({ id: user.id }) };
 };
 
 export const loginUser = async (data: LoginPropsType) => {
@@ -28,5 +29,6 @@ export const loginUser = async (data: LoginPropsType) => {
     if (!user) throw new Error("User not found");
     const valid = await bcrypt.compare(password, user.passwordHash);
     if (!valid) throw new Error("Invalid credentials");
-    return { ...user, token: signToken({ id: user.id }) };
+    const { passwordHash, ...returnedUser } = user;
+    return { ...returnedUser, token: signToken({ id: user.id }) };
 };
