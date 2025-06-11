@@ -13,7 +13,7 @@ import { deleteCookie } from "cookies-next";
 import { redirect } from "next/navigation";
 
 const DashboardButtons = () => {
-    const { user, clearUser } = useUserStore();
+    const { clearUser } = useUserStore();
 
     const logout = () => {
         deleteCookie("token");
@@ -24,14 +24,11 @@ const DashboardButtons = () => {
 
     return (
         <div className="flex justify-end items-center gap-6">
-            {user?.firstname}
-
             <div className="flex justify-end items-center gap-2">
                 <DropdownMenu>
                     <DropdownMenuTrigger>
                         <IconButton
                             icon={User}
-                            size="md"
                             variant="outline-primary"
                             className="rounded-lg border-2 cursor-pointer hover:text-white"
                         />
@@ -47,7 +44,6 @@ const DashboardButtons = () => {
                 </DropdownMenu>
                 <IconButton
                     icon={LogOut}
-                    size="md"
                     variant="outline-primary"
                     className="rounded-lg border-2 cursor-pointer hover:text-white"
                     onClick={logout}

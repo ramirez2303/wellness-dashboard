@@ -1,10 +1,10 @@
 "use client";
 
 import { LucideIcon } from "lucide-react";
-import { ButtonHTMLAttributes } from "react";
+import { HTMLAttributes } from "react";
 import clsx from "clsx";
 
-interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface IconButtonProps extends HTMLAttributes<HTMLDivElement> {
     icon: LucideIcon;
     size?: "sm" | "md" | "lg";
     variant?:
@@ -52,8 +52,7 @@ const IconButton = ({
     const transitionStyle = "duration-300 ease-in-out";
 
     return (
-        <button
-            type="button"
+        <div
             className={clsx(
                 baseStyle,
                 sizeStyle,
@@ -64,7 +63,7 @@ const IconButton = ({
             {...props}
         >
             <Icon className={iconSize} />
-        </button>
+        </div>
     );
 };
 

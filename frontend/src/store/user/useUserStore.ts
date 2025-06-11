@@ -8,6 +8,9 @@ const useUserStore = create(
             user: null,
             setUser: (user) => set({ user }),
             clearUser: () => set({ user: null }),
+
+            isOpenSidebar: false,
+            setIsOpenSidebar: (isOpen) => set({ isOpenSidebar: isOpen }),
         }),
         {
             name: "user-store",
