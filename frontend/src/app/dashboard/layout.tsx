@@ -4,14 +4,22 @@ import Sidebar from "@/components/ui/Sidebar/Sidebar";
 import useUserStore from "@/store/user/useUserStore";
 import React from "react";
 
-const Layout = () => {
+const Layout = ({
+    children,
+}: Readonly<{
+    children: React.ReactNode;
+}>) => {
     const { isOpenSidebar } = useUserStore();
 
     return (
         <SidebarProvider defaultOpen={false} open={isOpenSidebar}>
-            <div>
+            <div
+                className={`w-full mt-[80px] duration-300 ease-in-out ${
+                    isOpenSidebar && "pl-[255px]"
+                }`}
+            >
                 <Sidebar />
-                <div>layout</div>
+                {children}
             </div>
         </SidebarProvider>
     );
