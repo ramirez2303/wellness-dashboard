@@ -1,9 +1,7 @@
+import { User } from "@/types/User";
+
 export interface UserState {
-    user: {
-        id: string;
-        name: string;
-        email: string;
-    } | null;
-    setUser: (user: { id: string; name: string; email: string }) => void;
+    user: User | null;
+    setUser: (user: UserState["user"]) => void;
     clearUser: () => void;
 }

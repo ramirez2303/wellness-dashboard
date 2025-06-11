@@ -5,9 +5,15 @@ const authApi = axios.create({
     baseURL: "http://localhost:4000/api/auth",
 });
 
-export const register = (data: UserRegister) => authApi.post(`/register`, data);
+export const register = async (data: UserRegister) => {
+    const response = await authApi.post(`/register`, data);
+    return response.data;
+};
 
-export const login = (data: UserLogin) => authApi.post(`/login`, data);
+export const login = async (data: UserLogin) => {
+    const response = await authApi.post(`/login`, data);
+    return response.data;
+};
 
 export const getProfile = async (token: string) =>
     await authApi.get("/profile", {

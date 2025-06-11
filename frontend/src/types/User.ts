@@ -7,3 +7,11 @@ export interface UserRegister extends UserLogin {
     firstname: string;
     lastname: string;
 }
+
+export interface User {
+    id: string;
+    email: string;
+    firstname: string;
+    lastname: string;
+    token?: string;
+}
