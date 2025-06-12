@@ -17,7 +17,7 @@ import { usePathname } from "next/navigation";
 const Sidebar = () => {
     const pathname = usePathname();
     const { clearUser } = useUserStore();
-    const menuItems = ["Dashboard", "Profile", "Settings", "Notifications"];
+    const menuItems = ["Dashboard", "Mental", "Physical", "Reports", "Profile"];
 
     const logout = () => {
         deleteCookie("token");

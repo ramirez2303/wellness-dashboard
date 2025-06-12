@@ -128,72 +128,12 @@ exports.Prisma.AuthUserScalarFieldEnum = {
   passwordHash: 'passwordHash'
 };
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.MentalStateScalarFieldEnum = {
   id: 'id',
-  email: 'email',
-  name: 'name',
-  avatar: 'avatar',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.HealthMetricScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  type: 'type',
-  value: 'value',
-  unit: 'unit',
-  date: 'date',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.WorkoutScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  name: 'name',
-  type: 'type',
-  duration: 'duration',
-  calories: 'calories',
-  notes: 'notes',
-  date: 'date',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.SleepRecordScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  bedtime: 'bedtime',
-  wakeTime: 'wakeTime',
-  duration: 'duration',
-  quality: 'quality',
-  notes: 'notes',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.MoodEntryScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
   mood: 'mood',
-  energy: 'energy',
-  stress: 'stress',
-  notes: 'notes',
-  date: 'date',
-  createdAt: 'createdAt'
-};
-
-exports.Prisma.GoalScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  title: 'title',
-  description: 'description',
-  type: 'type',
-  target: 'target',
-  current: 'current',
-  unit: 'unit',
-  deadline: 'deadline',
-  status: 'status',
+  note: 'note',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  userId: 'userId'
 };
 
 exports.Prisma.SortOrder = {
@@ -210,86 +150,39 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-exports.MetricType = exports.$Enums.MetricType = {
-  WEIGHT: 'WEIGHT',
-  HEIGHT: 'HEIGHT',
-  BLOOD_PRESSURE: 'BLOOD_PRESSURE',
-  HEART_RATE: 'HEART_RATE',
-  BODY_FAT: 'BODY_FAT',
-  MUSCLE_MASS: 'MUSCLE_MASS',
-  WATER_INTAKE: 'WATER_INTAKE',
-  STEPS: 'STEPS'
-};
-
-exports.WorkoutType = exports.$Enums.WorkoutType = {
-  CARDIO: 'CARDIO',
-  STRENGTH: 'STRENGTH',
-  FLEXIBILITY: 'FLEXIBILITY',
-  YOGA: 'YOGA',
-  PILATES: 'PILATES',
-  SWIMMING: 'SWIMMING',
-  RUNNING: 'RUNNING',
-  CYCLING: 'CYCLING',
-  WALKING: 'WALKING',
-  OTHER: 'OTHER'
-};
-
-exports.SleepQuality = exports.$Enums.SleepQuality = {
-  POOR: 'POOR',
-  FAIR: 'FAIR',
-  GOOD: 'GOOD',
-  EXCELLENT: 'EXCELLENT'
-};
-
-exports.MoodLevel = exports.$Enums.MoodLevel = {
-  VERY_LOW: 'VERY_LOW',
-  LOW: 'LOW',
+exports.Mood = exports.$Enums.Mood = {
+  HAPPY: 'HAPPY',
+  EXCITED: 'EXCITED',
+  ENERGETIC: 'ENERGETIC',
+  PROUD: 'PROUD',
+  MOTIVATED: 'MOTIVATED',
+  LOVED: 'LOVED',
+  GRATEFUL: 'GRATEFUL',
+  CALM: 'CALM',
+  HOPEFUL: 'HOPEFUL',
+  CONFIDENT: 'CONFIDENT',
   NEUTRAL: 'NEUTRAL',
-  GOOD: 'GOOD',
-  VERY_GOOD: 'VERY_GOOD'
-};
-
-exports.EnergyLevel = exports.$Enums.EnergyLevel = {
-  VERY_LOW: 'VERY_LOW',
-  LOW: 'LOW',
-  MODERATE: 'MODERATE',
-  HIGH: 'HIGH',
-  VERY_HIGH: 'VERY_HIGH'
-};
-
-exports.StressLevel = exports.$Enums.StressLevel = {
-  VERY_LOW: 'VERY_LOW',
-  LOW: 'LOW',
-  MODERATE: 'MODERATE',
-  HIGH: 'HIGH',
-  VERY_HIGH: 'VERY_HIGH'
-};
-
-exports.GoalType = exports.$Enums.GoalType = {
-  WEIGHT_LOSS: 'WEIGHT_LOSS',
-  WEIGHT_GAIN: 'WEIGHT_GAIN',
-  FITNESS: 'FITNESS',
-  NUTRITION: 'NUTRITION',
-  SLEEP: 'SLEEP',
-  MINDFULNESS: 'MINDFULNESS',
-  OTHER: 'OTHER'
-};
-
-exports.GoalStatus = exports.$Enums.GoalStatus = {
-  ACTIVE: 'ACTIVE',
-  COMPLETED: 'COMPLETED',
-  PAUSED: 'PAUSED',
-  CANCELLED: 'CANCELLED'
+  TIRED: 'TIRED',
+  BORED: 'BORED',
+  DISTRACTED: 'DISTRACTED',
+  INDIFFERENT: 'INDIFFERENT',
+  REFLECTIVE: 'REFLECTIVE',
+  SAD: 'SAD',
+  ANGRY: 'ANGRY',
+  ANXIOUS: 'ANXIOUS',
+  WORRIED: 'WORRIED',
+  FRUSTRATED: 'FRUSTRATED',
+  OVERWHELMED: 'OVERWHELMED',
+  LONELY: 'LONELY',
+  EMBARRASSED: 'EMBARRASSED',
+  STRESSED: 'STRESSED',
+  GUILTY: 'GUILTY',
+  HOPELESS: 'HOPELESS'
 };
 
 exports.Prisma.ModelName = {
   AuthUser: 'AuthUser',
-  User: 'User',
-  HealthMetric: 'HealthMetric',
-  Workout: 'Workout',
-  SleepRecord: 'SleepRecord',
-  MoodEntry: 'MoodEntry',
-  Goal: 'Goal'
+  MentalState: 'MentalState'
 };
 
 /**
