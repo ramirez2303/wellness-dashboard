@@ -33,11 +33,22 @@ const Sidebar = () => {
                     {menuItems.map((route, ix) => (
                         <Link
                             key={route + ix}
-                            href={`/${route.toLowerCase()}`}
+                            href={
+                                route === "Dashboard"
+                                    ? "/"
+                                    : `/dashboard/${route.toLowerCase()}`
+                            }
                             className={`text-xl font-medium list-none py-2 px-4 cursor-pointer hover:bg-custom-primary/90 rounded-lg hover:text-white duration-300 ease-in-out ${
-                                pathname
-                                    .toLowerCase()
-                                    .includes(route.toLowerCase()) &&
+                                (route === "Dashboard"
+                                    ? pathname
+                                          .split("/")
+                                          [
+                                              pathname.split("/").length - 1
+                                          ].toLowerCase() ===
+                                      route.toLowerCase()
+                                    : pathname
+                                          .toLowerCase()
+                                          .includes(route.toLowerCase())) &&
                                 "bg-custom-primary text-white"
                             }`}
                         >

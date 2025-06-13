@@ -4,9 +4,9 @@ import { UserLogin } from "@/types/User";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "@/lib/Schemas";
 import { useForm } from "react-hook-form";
-import { login } from "@/lib/api";
 import { useMutation } from "@tanstack/react-query";
 import useUserStore from "@/store/user/useUserStore";
+import { login } from "@/services/authServices";
 
 export const useLoginUser = () => {
     const router = useRouter();
@@ -20,7 +20,7 @@ export const useLoginUser = () => {
         mode: "onChange",
     });
 
-    const { mutate } = useMutation({
+    const { mutateAsync } = useMutation({
         mutationFn: login,
         onSuccess: (data) => {
             const { token, ...user } = data.data;
@@ -38,7 +38,7 @@ export const useLoginUser = () => {
     });
 
     const onSubmit = (data: UserLogin) => {
-        mutate(data);
+        mutateAsync(data);
     };
 
     const handleFormSubmit = handleSubmit(onSubmit);

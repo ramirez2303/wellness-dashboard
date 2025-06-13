@@ -18,14 +18,25 @@ const Input = ({ label, className, error, ...rest }: InputProps) => {
                     {label?.text}
                 </label>
             )}
-            <input
-                data-testid="input-field"
-                className={
-                    "px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 " +
-                    className
-                }
-                {...rest}
-            />
+            {rest.type === "textarea" ? (
+                <textarea
+                    data-testid="input-field"
+                    className={
+                        "px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 " +
+                        className
+                    }
+                    {...(rest as React.TextareaHTMLAttributes<HTMLTextAreaElement>)}
+                />
+            ) : (
+                <input
+                    data-testid="input-field"
+                    className={
+                        "px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-200 " +
+                        className
+                    }
+                    {...(rest as React.InputHTMLAttributes<HTMLInputElement>)}
+                />
+            )}
             <span
                 className={`text-xs font-regular text-red-500 mt-1 ${
                     error ? "opacity-100" : "opacity-0"

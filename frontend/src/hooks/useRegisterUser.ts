@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterSchema } from "@/lib/Schemas";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { register as registerFn } from "@/lib/api";
+import { register as registerFn } from "@/services/authServices";
 
 export const useRegisterUser = () => {
     const {
@@ -15,7 +15,7 @@ export const useRegisterUser = () => {
         mode: "onChange",
     });
 
-    const { mutate } = useMutation({
+    const { mutateAsync } = useMutation({
         mutationFn: registerFn,
         onSuccess: (data) => {
             console.log("Login successful:", data);
@@ -26,7 +26,7 @@ export const useRegisterUser = () => {
     });
 
     const onSubmit = (data: UserRegister) => {
-        mutate(data);
+        mutateAsync(data);
     };
 
     const handleFormSubmit = handleSubmit(onSubmit);
