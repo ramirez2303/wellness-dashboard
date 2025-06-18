@@ -1,10 +1,11 @@
 import { getMentalRecord } from "@/services/mentalServices";
 import useUserStore from "@/store/user/useUserStore";
+import { MentalRecordResponse } from "@/types/Mental";
 import { useQuery } from "@tanstack/react-query";
 
 export const useHandleMentalRecord = () => {
     const { user } = useUserStore();
-    const { data } = useQuery({
+    const { data } = useQuery<MentalRecordResponse>({
         queryKey: ["mentalRecords"],
         queryFn: () => getMentalRecord(user?.id),
         refetchOnWindowFocus: false,
@@ -15,5 +16,5 @@ export const useHandleMentalRecord = () => {
         staleTime: 1000 * 60 * 5,
     });
 
-    return { data };
+    return { data: data?.data };
 };

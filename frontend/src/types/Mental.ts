@@ -35,3 +35,15 @@ export interface MentalRecord {
 export interface MentalRecordParam extends MentalRecord {
     userId: string;
 }
+
+export interface MentalRecordData {
+    id: string;
+    mood: MentalStates;
+    note?: string;
+    createdAt: string;
+    updatedAt: string;
+}
+export interface MentalRecordResponse {
+    message: string;
+    data: MentalRecordData[];
+}
