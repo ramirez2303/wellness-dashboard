@@ -1,13 +1,16 @@
+"use client";
+
 import { mentalSchema } from "@/lib/Schemas";
 import { postMentalRecord } from "@/services/mentalServices";
 import useUserStore from "@/store/user/useUserStore";
 import { MentalRecord, MentalRecordParam } from "@/types/Mental";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 
 export const useCreateMentalRecord = () => {
-    const { user } = useUserStore();
+    const { user, setIsOpenSidebar } = useUserStore();
     const form = useForm<MentalRecord>({
         resolver: zodResolver(mentalSchema),
         mode: "onChange",
@@ -17,10 +20,19 @@ export const useCreateMentalRecord = () => {
         },
     });
 
+    const [showSelect, setShowSelect] = useState(false);
+    const toggleSelect = () => setShowSelect((prev) => !prev);
+
+    const selectedMood = form.watch("mood");
+
+    const handleButtonClick = (value?: string) => {
+        form.setValue("mood", value as MentalRecord["mood"]);
+    };
+
     const { mutateAsync } = useMutation({
         mutationFn: postMentalRecord,
-        onSuccess: (data) => {
-            console.log("Mental record submitted successfully:", data);
+        onSuccess: () => {
+            setIsOpenSidebar(false);
             form.reset();
         },
         onError: (error) => {
@@ -37,5 +49,13 @@ export const useCreateMentalRecord = () => {
     const submitDisabled =
         !form.formState.isValid || form.formState.isSubmitting;
 
-    return { form, handleFormSubmit, submitDisabled };
+    return {
+        form,
+        handleFormSubmit,
+        submitDisabled,
+        selectedMood,
+        handleButtonClick,
+        showSelect,
+        toggleSelect,
+    };
 };

@@ -1,3 +1,5 @@
+"use client"
+
 import React, { MouseEventHandler } from "react";
 
 type ButtonProps = {
@@ -12,6 +14,7 @@ type ButtonProps = {
         | "accent-outlined"
         | "none";
     disabled?: boolean;
+    icon?: React.ReactNode;
 };
 
 const Button = ({
@@ -21,6 +24,7 @@ const Button = ({
     type = "button",
     variant,
     disabled,
+    icon,
 }: ButtonProps) => {
     const primaryFilled =
         "bg-custom-primary bg-custom-primary hover:bg-custom-primary/90";
@@ -48,6 +52,7 @@ const Button = ({
             onClick={onClick}
             type={type}
         >
+            {icon}
             {children}
         </button>
     );

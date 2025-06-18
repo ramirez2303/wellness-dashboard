@@ -1,96 +1,174 @@
 "use client";
+
 import Button from "@/components/common/Button";
-import Input from "@/components/common/Input";
-import React from "react";
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select";
+import React, { ReactNode } from "react";
 import { useCreateMentalRecord } from "@/app/dashboard/hooks/useCreateMentalRecord";
+import { Form } from "@/components/ui/form";
+
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-} from "@/components/ui/form";
-import { moodOptions } from "@/lib/Schemas";
-import { capitalizeFirstLetter } from "@/lib/utils";
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 
-const MentalForm = () => {
-    const { form, handleFormSubmit, submitDisabled } = useCreateMentalRecord();
-    return (
-        <Form {...form}>
-            <form onSubmit={handleFormSubmit}>
-                <div className="flex flex-col gap-4 mb-6 max-w-sm">
-                    <FormField
-                        control={form.control}
-                        name="mood"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="">Mood</FormLabel>
-                                <Select
-                                    onValueChange={field.onChange}
-                                    defaultValue={field.value}
+import {
+    Drawer,
+    DrawerClose,
+    DrawerContent,
+    DrawerDescription,
+    DrawerFooter,
+    DrawerHeader,
+    DrawerTitle,
+    DrawerTrigger,
+} from "@/components/ui/drawer";
+
+import MoodInput from "./components/MoodInput";
+import NotesInput from "./components/NotesInput";
+import EmojiInput from "./components/EmojiInput";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Plus } from "lucide-react";
+import { useState } from "react";
+
+type MentalFormProps = {
+    children?: ReactNode;
+};
+
+const MentalForm = ({ children }: MentalFormProps) => {
+    const {
+        form,
+        handleFormSubmit,
+        submitDisabled,
+        selectedMood,
+        handleButtonClick,
+        showSelect,
+        toggleSelect,
+    } = useCreateMentalRecord();
+    const isMobile = useIsMobile();
+    const [isOpen, setIsOpen] = useState(false);
+
+    if (isMobile) {
+        return (
+            <Drawer open={isOpen} onOpenChange={setIsOpen}>
+                <DrawerTrigger asChild>
+                    {children ? (
+                        children
+                    ) : (
+                        <Button
+                            variant="primary-filled"
+                            className="flex justify-center items-center gap-1 px-3 py-5 text-white text-xl fixed bottom-0 left-0 w-full"
+                            icon={<Plus />}
+                        >
+                            Agregar estado
+                        </Button>
+                    )}
+                </DrawerTrigger>
+                <DrawerContent>
+                    <DrawerHeader className="px-6 mt-2 mb-4 gap-1">
+                        <DrawerTitle className="text-lg font-semibold text-left">
+                            Add Mental Health Record
+                        </DrawerTitle>
+                        <DrawerDescription className="text-sm font-medium text-gray-500 text-left">
+                            Please fill out the form below to add your mental
+                            health record.
+                        </DrawerDescription>
+                    </DrawerHeader>
+                    <Form {...form}>
+                        <form
+                            onSubmit={(e) => {
+                                handleFormSubmit(e).then(() =>
+                                    setIsOpen(false)
+                                );
+                            }}
+                        >
+                            <div className="flex flex-col gap-4 mb-6 px-6">
+                                <EmojiInput
+                                    selectedMood={selectedMood}
+                                    handleButtonClick={handleButtonClick}
+                                    showSelect={showSelect}
+                                    toggleSelect={toggleSelect}
+                                />
+                                {showSelect && (
+                                    <MoodInput control={form.control} />
+                                )}
+                                <NotesInput control={form.control} />
+                            </div>
+                            <DrawerFooter className="pt-0 px-0">
+                                <Button
+                                    type="submit"
+                                    variant="primary-filled"
+                                    className="w-full px-4 py-2 text-white hover:bg-custom-primary-90 duration-300 ease-in-out cursor-pointer"
+                                    disabled={submitDisabled}
                                 >
-                                    <FormControl>
-                                        <SelectTrigger className="w-full">
-                                            <SelectValue placeholder="Enter your mood" />
-                                        </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent className="max-h-80">
-                                        {moodOptions.map((option, ix) => (
-                                            <SelectItem key={ix} value={option}>
-                                                {capitalizeFirstLetter(option)}
-                                            </SelectItem>
-                                        ))}
-                                    </SelectContent>
-                                </Select>
-                                {/* <FormDescription>
-                                    You can manage email addresses in your{" "}
-                                    <Link href="/examples/forms">
-                                        email settings
-                                    </Link>
-                                    .
-                                </FormDescription>
-                                <FormMessage /> */}
-                            </FormItem>
-                        )}
-                    />
-                    <FormField
-                        control={form.control}
-                        name="note"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormControl>
-                                    <Input
-                                        id="notes"
-                                        type="textarea"
-                                        label={{ text: "Notes" }}
-                                        required
-                                        placeholder="Enter your notes"
-                                        onChange={field.onChange}
-                                        defaultValue={field.value}
-                                    />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
-                </div>
+                                    Submit
+                                </Button>
+                                <DrawerClose>
+                                    <Button variant="none">Cancel</Button>
+                                </DrawerClose>
+                            </DrawerFooter>
+                        </form>
+                    </Form>
+                </DrawerContent>
+            </Drawer>
+        );
+    }
 
-                <Button
-                    type="submit"
-                    variant="primary-filled"
-                    className="px-4 py-2 text-white rounded-md hover:bg-custom-primary-90 duration-300 ease-in-out cursor-pointer"
-                    disabled={submitDisabled}
-                >
-                    Submit
-                </Button>
-            </form>
-        </Form>
+    return (
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+            <DialogTrigger asChild>
+                {children ? (
+                    children
+                ) : (
+                    <Button
+                        variant="primary-outlined"
+                        className="flex md:justify-start items-center gap-1 px-3 py-2 rounded-lg border-2 text-black hover:text-white cursor-pointer "
+                        icon={<Plus />}
+                    >
+                        Agregar estado
+                    </Button>
+                )}
+            </DialogTrigger>
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle className="text-lg font-semibold">
+                        Add Mental Health Record
+                        <DialogDescription className="text-sm font-medium text-gray-500">
+                            Please fill out the form below to add your mental
+                            health record.
+                        </DialogDescription>
+                    </DialogTitle>
+                </DialogHeader>
+                <Form {...form}>
+                    <form
+                        onSubmit={(e) => {
+                            handleFormSubmit(e).then(() => setIsOpen(false));
+                        }}
+                    >
+                        <div className="flex flex-col gap-4 mb-6">
+                            <EmojiInput
+                                selectedMood={selectedMood}
+                                handleButtonClick={handleButtonClick}
+                                showSelect={showSelect}
+                                toggleSelect={toggleSelect}
+                            />
+                            {showSelect && <MoodInput control={form.control} />}
+                            <NotesInput control={form.control} />
+                        </div>
+
+                        <Button
+                            type="submit"
+                            variant="primary-filled"
+                            className="w-full px-4 py-2 text-white rounded-md hover:bg-custom-primary-90 duration-300 ease-in-out cursor-pointer"
+                            disabled={submitDisabled}
+                        >
+                            Submit
+                        </Button>
+                    </form>
+                </Form>
+            </DialogContent>
+        </Dialog>
     );
 };
 

@@ -12,7 +12,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input = ({ label, className, error, ...rest }: InputProps) => {
     return (
-        <div className="flex flex-col w-full max-w-sm">
+        <div className="flex flex-col w-full">
             {label?.text && (
                 <label htmlFor={rest.id} className={label?.className + " mb-2"}>
                     {label?.text}

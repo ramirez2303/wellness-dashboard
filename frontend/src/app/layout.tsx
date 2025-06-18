@@ -6,6 +6,7 @@ import ReactQueryProvider from "@/lib/ReactQueryProvider";
 
 const outfit = Outfit({
     subsets: ["latin"],
+    display: "swap",
     variable: "--font-outfit",
 });
 
@@ -21,7 +22,10 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${outfit.variable} font-outfit h-[100vh]`}>
+            <body
+                suppressHydrationWarning={true}
+                className={`${outfit.variable || ""} font-outfit h-[100vh]`}
+            >
                 <ReactQueryProvider>
                     <Navbar />
                     {children}
