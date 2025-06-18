@@ -41,21 +41,21 @@ export const useMentalBarChart = () => {
             { positives: number; negatives: number }
         > = {};
         data.forEach((entry) => {
-            const date = format(parseISO(entry.createdAt), "EEEE"); // Nombre del día (lunes, martes, etc.)
+            const date = format(parseISO(entry.createdAt), "dd MMMM");
             const mood = entry.mood;
 
             if (!groupedByDate[date]) {
-                groupedByDate[date] = { positives: 0, negatives: 0 };
+            groupedByDate[date] = { positives: 0, negatives: 0 };
             }
 
             if (
-                positiveMoods.includes(mood as (typeof positiveMoods)[number])
+            positiveMoods.includes(mood as (typeof positiveMoods)[number])
             ) {
-                groupedByDate[date].positives++;
+            groupedByDate[date].positives++;
             } else if (
-                negativeMoods.includes(mood as (typeof negativeMoods)[number])
+            negativeMoods.includes(mood as (typeof negativeMoods)[number])
             ) {
-                groupedByDate[date].negatives++;
+            groupedByDate[date].negatives++;
             }
         });
 
@@ -63,7 +63,7 @@ export const useMentalBarChart = () => {
             name: date,
             firstValue: counts.positives,
             secondValue: counts.negatives,
-        }));
+        })).reverse();
     };
 
     const chartConfig = {

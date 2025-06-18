@@ -10,7 +10,7 @@ const MentalBarChart = ({ mentalRecords }: MentalBarChartProps) => {
     const { getBarChartData, chartConfig } = useMentalBarChart();
 
     return (
-        <div className="col-span-4">
+        <div>
             <BarChart
                 title="Mental Health Mood Trends"
                 description="January - June 2024"

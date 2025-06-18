@@ -42,7 +42,7 @@ const BarChart = ({
     chartConfig,
 }: BarChartProps) => {
     return (
-        <Card className="h-full">
+        <Card>
             <CardHeader>
                 <CardTitle>{title}</CardTitle>
                 <CardDescription>{description}</CardDescription>
@@ -56,7 +56,6 @@ const BarChart = ({
                             tickLine={false}
                             tickMargin={10}
                             axisLine={false}
-                            tickFormatter={(value) => value.slice(0, 3)}
                         />
                         <ChartTooltip
                             content={<ChartTooltipContent hideLabel />}

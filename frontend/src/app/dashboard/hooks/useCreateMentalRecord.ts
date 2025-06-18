@@ -8,9 +8,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import useMentalStore from "../mental/store/useMentalStore";
 
 export const useCreateMentalRecord = () => {
     const { user, setIsOpenSidebar } = useUserStore();
+    const { toggleRefetchData } = useMentalStore();
     const form = useForm<MentalRecord>({
         resolver: zodResolver(mentalSchema),
         mode: "onChange",
@@ -33,6 +35,7 @@ export const useCreateMentalRecord = () => {
         mutationFn: postMentalRecord,
         onSuccess: () => {
             setIsOpenSidebar(false);
+            toggleRefetchData();
             form.reset();
         },
         onError: (error) => {
