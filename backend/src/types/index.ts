@@ -2,6 +2,7 @@ import { z } from "zod";
 import { loginSchema, registerSchema } from "../schemas/authSchema";
 import { mentalSchema } from "../schemas/mentalSchema";
 import { exercisesSchema } from "../schemas/exercisesSchema";
+import { habitsSchema } from "../schemas/habitsSchema";
 
 export interface AuthUser {
     id: string;
@@ -75,3 +76,14 @@ export interface PhysicalEntry {
 }
 
 export type ExercisesPropType = z.infer<typeof exercisesSchema>;
+
+export interface HabitEntry {
+    userId: string;
+    date?: string;
+    sleepHours: number;
+    waterLiters: number;
+    energyLevel: "LOW" | "MEDIUM" | "HIGH";
+    note?: string;
+}
+
+export type HabitsPropType = z.infer<typeof habitsSchema>;

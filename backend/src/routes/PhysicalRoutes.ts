@@ -5,18 +5,29 @@ import {
     exercisesGetSchema,
     exercisesSchema,
 } from "../schemas/exercisesSchema";
+import { habitsGetSchema, habitsSchema } from "../schemas/habitsSchema";
 
 const router = Router();
 
 router.post(
     "/exercise",
     validateBody(exercisesSchema),
-    physicalControler.createPhysicalRecord
+    physicalControler.createPhysicalExerciseRecord
 );
 router.get(
     "/exercise",
     validateQuery(exercisesGetSchema),
-    physicalControler.getPhysicalRecord
+    physicalControler.getPhysicalExeciseRecord
+);
+router.post(
+    "/habits",
+    validateBody(habitsSchema),
+    physicalControler.createPhysicalHabitsRecord
+);
+router.get(
+    "/habits",
+    validateQuery(habitsGetSchema),
+    physicalControler.getPhysicalHabitsRecord
 );
 
 export default router;
