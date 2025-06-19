@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { loginSchema, registerSchema } from "../schemas/authSchema";
 import { mentalSchema } from "../schemas/mentalSchema";
+import { exercisesSchema } from "../schemas/exercisesSchema";
 
 export interface AuthUser {
     id: string;
@@ -56,3 +57,21 @@ export interface MentalEntry {
 }
 
 export type MentalPropType = z.infer<typeof mentalSchema>;
+
+export interface Exercise {
+    type: "RUN" | "BIKE" | "GYM" | "SWIM" | "YOGA" | "WALK";
+    duration: number;
+    intensity: "LOW" | "MEDIUM" | "HIGH";
+}
+
+export interface PhysicalEntry {
+    id: string;
+    userId: string;
+    date: string;
+    exercises: Exercise[];
+    note?: string;
+    caloriesBurned: number;
+    createdAt: string;
+}
+
+export type ExercisesPropType = z.infer<typeof exercisesSchema>;

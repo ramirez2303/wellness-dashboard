@@ -59,3 +59,54 @@ enum Mood {
   GUILTY
   HOPELESS
 }
+
+enum EnergyLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+enum ExerciseType {
+  RUN
+  BIKE
+  GYM
+  SWIM
+  YOGA
+  WALK
+}
+
+enum IntensityLevel {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+model PhysicalHabit {
+  id           String      @id @default(uuid())
+  userId       String
+  date         DateTime
+  sleepHours   Float
+  waterLiters  Float
+  energyLevel  EnergyLevel
+  note         String?
+  createdAt    DateTime    @default(now())
+}
+
+model ExerciseRecord {
+  id             String        @id @default(uuid())
+  userId         String
+  date           DateTime
+  caloriesBurned Int
+  note           String?
+  createdAt      DateTime      @default(now())
+  exercises      Exercise[]
+}
+
+model Exercise {
+  id               String           @id @default(uuid())
+  type             ExerciseType
+  duration         Int
+  intensity        IntensityLevel
+  exerciseRecordId String
+  exerciseRecord   ExerciseRecord   @relation(fields: [exerciseRecordId], references: [id])
+}

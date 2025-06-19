@@ -136,6 +136,34 @@ exports.Prisma.MentalStateScalarFieldEnum = {
   userId: 'userId'
 };
 
+exports.Prisma.PhysicalHabitScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  date: 'date',
+  sleepHours: 'sleepHours',
+  waterLiters: 'waterLiters',
+  energyLevel: 'energyLevel',
+  note: 'note',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ExerciseRecordScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  date: 'date',
+  caloriesBurned: 'caloriesBurned',
+  note: 'note',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ExerciseScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  duration: 'duration',
+  intensity: 'intensity',
+  exerciseRecordId: 'exerciseRecordId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -180,9 +208,33 @@ exports.Mood = exports.$Enums.Mood = {
   HOPELESS: 'HOPELESS'
 };
 
+exports.EnergyLevel = exports.$Enums.EnergyLevel = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+};
+
+exports.ExerciseType = exports.$Enums.ExerciseType = {
+  RUN: 'RUN',
+  BIKE: 'BIKE',
+  GYM: 'GYM',
+  SWIM: 'SWIM',
+  YOGA: 'YOGA',
+  WALK: 'WALK'
+};
+
+exports.IntensityLevel = exports.$Enums.IntensityLevel = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+};
+
 exports.Prisma.ModelName = {
   AuthUser: 'AuthUser',
-  MentalState: 'MentalState'
+  MentalState: 'MentalState',
+  PhysicalHabit: 'PhysicalHabit',
+  ExerciseRecord: 'ExerciseRecord',
+  Exercise: 'Exercise'
 };
 
 /**
