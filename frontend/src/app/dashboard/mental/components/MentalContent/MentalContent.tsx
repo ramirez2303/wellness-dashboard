@@ -1,9 +1,9 @@
 "use client";
 
-import { useHandleMentalRecord } from "@/app/dashboard/hooks/useHandleMentalRecord";
-import MentalPieChart from "./components/MentalPieChart";
+import { useHandleMentalRecord } from "@/app/dashboard/mental/hooks/useHandleMentalRecord";
 import MentalBarChart from "./components/MentalBarChart";
 import MentalDatePicker from "./components/MentalDatePicker";
+import MentalPieChart from "./components/MentalPieChart";
 import MentalTable from "./components/MentalTable";
 
 const MentalContent = () => {

@@ -2,8 +2,8 @@ import { getMentalRecord } from "@/services/mentalServices";
 import useUserStore from "@/store/user/useUserStore";
 import { MentalRecordResponse } from "@/types/Mental";
 import { useQuery } from "@tanstack/react-query";
-import useMentalStore from "../mental/store/useMentalStore";
 import { useEffect } from "react";
+import useMentalStore from "../store/useMentalStore";
 
 export const useHandleMentalRecord = () => {
     const { user } = useUserStore();

@@ -47,3 +47,4 @@ export interface MentalRecordResponse {
     message: string;
     data: MentalRecordData[];
 }
+

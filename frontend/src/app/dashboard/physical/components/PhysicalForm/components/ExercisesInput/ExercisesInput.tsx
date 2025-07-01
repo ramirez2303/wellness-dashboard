@@ -1,0 +1,60 @@
+import React from "react";
+import ExercisesType from "./components/ExercisesType";
+import ExercisesDuration from "./components/ExercisesDuration";
+import ExercisesIntensity from "./components/ExercisesIntensity";
+import ExercisesConfirm from "./components/ExercisesConfirm";
+import { useAddExercise } from "./hooks/useAddExercise";
+import { Exercise } from "@/types/Physical";
+
+type ExercisesInputProps = {
+    exercise: Exercise;
+    index: number;
+    handleConfirmClick: (index: number, value: Exercise) => void;
+    handleRemoveClick: (index: number) => void;
+};
+
+const ExercisesInput = ({
+    exercise,
+    index,
+    handleConfirmClick,
+    handleRemoveClick,
+}: ExercisesInputProps) => {
+    const { exerciseValues, handleSetValues } = useAddExercise();
+
+    const isConfirmed =
+        !!exercise.type && !!exercise.duration && !!exercise.intensity;
+    const isEmpty =
+        !exerciseValues?.type ||
+        !exerciseValues?.duration ||
+        !exerciseValues?.intensity;
+
+    return (
+        <div className="min-w-[600px] max-w-[600px] grid grid-cols-16 items-center gap-x-4 gap-y-2">
+            <ExercisesType
+                value={exercise.type ?? exerciseValues?.type}
+                handleSetValues={handleSetValues}
+            />
+            <ExercisesDuration
+                value={exercise.duration ?? exerciseValues?.duration}
+                handleSetValues={handleSetValues}
+            />
+            <ExercisesIntensity
+                value={exercise.intensity ?? exerciseValues?.intensity}
+                handleSetValues={handleSetValues}
+            />
+            <ExercisesConfirm
+                disableCheck={isConfirmed || isEmpty}
+                handleConfirm={() =>
+                    exerciseValues &&
+                    handleConfirmClick(index, {
+                        ...exerciseValues,
+                        key: exercise.key,
+                    })
+                }
+                handleRemove={() => handleRemoveClick(index)}
+            />
+        </div>
+    );
+};
+
+export default ExercisesInput;
