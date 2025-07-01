@@ -1,6 +1,6 @@
 "use client";
 
-import { mentalSchema } from "@/lib/Schemas";
+import { mentalSchema } from "@/lib/schemas/Mental";
 import { postMentalRecord } from "@/services/mentalServices";
 import useUserStore from "@/store/user/useUserStore";
 import { MentalRecord, MentalRecordParam } from "@/types/Mental";

@@ -1,12 +1,13 @@
+import React from "react";
+
+import { HabitsRecord } from "@/types/Physical";
+import { Control } from "react-hook-form";
 import {
     FormControl,
     FormField,
     FormItem,
     FormLabel,
 } from "@/components/ui/form";
-import { moodOptions } from "@/lib/schemas/Mental";
-import { capitalizeFirstLetter } from "@/lib/utils";
-import { MentalRecord } from "@/types/Mental";
 import {
     Select,
     SelectContent,
@@ -14,21 +15,21 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select";
-import React from "react";
-import { Control } from "react-hook-form";
+import { capitalizeFirstLetter } from "@/lib/utils";
+import { habitsEnergy } from "@/lib/schemas/Habits";
 
-type MoodInputProps = {
-    control: Control<MentalRecord, unknown, MentalRecord>;
+type EnergyInputProps = {
+    control: Control<HabitsRecord, unknown, HabitsRecord>;
 };
 
-const MoodInput = ({ control }: MoodInputProps) => {
+const EnergyInput = ({ control }: EnergyInputProps) => {
     return (
         <FormField
             control={control}
-            name="mood"
+            name="energyLevel"
             render={({ field }) => (
                 <FormItem>
-                    <FormLabel className="">Mood</FormLabel>
+                    <FormLabel>Energy Level</FormLabel>
                     <Select
                         onValueChange={field.onChange}
                         defaultValue={field.value}
@@ -39,7 +40,7 @@ const MoodInput = ({ control }: MoodInputProps) => {
                             </SelectTrigger>
                         </FormControl>
                         <SelectContent className="max-h-80">
-                            {moodOptions.map((option, ix) => (
+                            {habitsEnergy.map((option, ix) => (
                                 <SelectItem key={option + ix} value={option}>
                                     {capitalizeFirstLetter(option)}
                                 </SelectItem>
@@ -52,4 +53,4 @@ const MoodInput = ({ control }: MoodInputProps) => {
     );
 };
 
-export default MoodInput;
+export default EnergyInput;

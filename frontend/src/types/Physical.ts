@@ -28,3 +28,25 @@ export interface ExercisesRecordResponse {
     message: string;
     data: ExercisesRecordData[];
 }
+
+export interface HabitsRecord {
+    sleepHours: number;
+    waterLiters: number;
+    energyLevel: "LOW" | "MEDIUM" | "HIGH";
+    note?: string;
+}
+
+export interface HabitsRecordParam extends HabitsRecord {
+    userId: string;
+}
+
+export interface HabitsRecordData {
+    id: string;
+    userId: string;
+    date: string;
+    sleepHours: number;
+    waterLiters: number;
+    energyLevel: "LOW" | "MEDIUM" | "HIGH";
+    note?: string;
+    createdAt: string;
+}

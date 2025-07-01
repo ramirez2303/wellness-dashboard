@@ -24,6 +24,7 @@ import Button from "@/components/common/Button";
 import { Plus } from "lucide-react";
 import SelectPhysicalButton from "./components/SelectPhysicalButton";
 import ExercisesForm from "./components/ExercisesForm";
+import HabitsForm from "./components/HabitsForm";
 
 type PhysicalFormProps = {
     children?: ReactNode;
@@ -120,6 +121,7 @@ const PhysicalForm = ({ children }: PhysicalFormProps) => {
                     <SelectPhysicalButton onSelect={handleSelectType} />
                 )}
                 {typeSelected === "exercises" && <ExercisesForm />}
+                {typeSelected === "habits" && <HabitsForm />}
             </DialogContent>
         </Dialog>
     );

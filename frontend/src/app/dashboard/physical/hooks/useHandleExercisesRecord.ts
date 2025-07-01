@@ -1,5 +1,5 @@
 import { generateId } from "@/app/utils";
-import { exercisesSchema } from "@/lib/Schemas";
+import { exercisesSchema } from "@/lib/schemas/Exercises";
 import { postExercisesRecord } from "@/services/physicsServices";
 import useUserStore from "@/store/user/useUserStore";
 import {

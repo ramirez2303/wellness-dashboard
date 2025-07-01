@@ -2,11 +2,11 @@ import { useRouter } from "next/navigation";
 import { setCookie } from "cookies-next";
 import { UserLogin } from "@/types/User";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginSchema } from "@/lib/Schemas";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import useUserStore from "@/store/user/useUserStore";
 import { login } from "@/services/authServices";
+import { LoginSchema } from "@/lib/schemas/Auth";
 
 export const useLoginUser = () => {
     const router = useRouter();

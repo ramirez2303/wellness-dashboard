@@ -1,6 +1,6 @@
 import { UserRegister } from "@/types/User";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { RegisterSchema } from "@/lib/Schemas";
+import { RegisterSchema } from "@/lib/schemas/Auth";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { register as registerFn } from "@/services/authServices";
