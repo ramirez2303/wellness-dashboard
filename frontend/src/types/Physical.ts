@@ -50,3 +50,8 @@ export interface HabitsRecordData {
     note?: string;
     createdAt: string;
 }
+
+export interface HabitsRecordResponse {
+    message: string;
+    data: HabitsRecordData[];
+}
