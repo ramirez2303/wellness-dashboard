@@ -10,6 +10,7 @@ const ExercisesForm = () => {
     const {
         form,
         submitDisabled,
+        handleFormSubmit,
         handleAddExercise,
         handleConfirmClick,
         handleRemoveClick,
@@ -20,7 +21,7 @@ const ExercisesForm = () => {
 
     return (
         <Form {...form}>
-            <form onSubmit={() => {}}>
+            <form onSubmit={handleFormSubmit}>
                 <div className="flex flex-col gap-4 mb-4">
                     <div className="flex flex-col gap-4">
                         <h4>Exercises record</h4>

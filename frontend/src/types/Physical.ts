@@ -5,11 +5,26 @@ export interface Exercise {
     intensity: "LOW" | "MEDIUM" | "HIGH" | "";
 }
 
-export interface PhysicalRecord {
+export interface ExercisesRecord {
     exercises: Exercise[];
     note?: string;
 }
 
-export interface PhysicalRecordParam extends PhysicalRecord {
+export interface ExercisesRecordParam extends ExercisesRecord {
     userId: string;
+}
+
+export interface ExercisesRecordData {
+    id: string;
+    userId: string;
+    exercises: Exercise[];
+    caloriesBurned: number;
+    note: string;
+    createdAt: string;
+    date: string;
+}
+
+export interface ExercisesRecordResponse {
+    message: string;
+    data: ExercisesRecordData[];
 }

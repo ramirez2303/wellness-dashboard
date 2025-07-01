@@ -1,11 +1,11 @@
 import Input from "@/components/common/Input";
 import { FormControl, FormField, FormItem } from "@/components/ui/form";
-import { PhysicalRecord } from "@/types/Physical";
+import { ExercisesRecord } from "@/types/Physical";
 import React from "react";
 import { Control } from "react-hook-form";
 
 type NotesInputProps = {
-    control: Control<PhysicalRecord, unknown, PhysicalRecord>;
+    control: Control<ExercisesRecord, unknown, ExercisesRecord>;
 };
 
 const NotesInput = ({ control }: NotesInputProps) => {

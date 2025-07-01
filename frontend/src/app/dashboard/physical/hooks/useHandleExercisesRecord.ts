@@ -1,19 +1,23 @@
 import { generateId } from "@/app/utils";
 import { exercisesSchema } from "@/lib/Schemas";
+import { postExercisesRecord } from "@/services/physicsServices";
+import useUserStore from "@/store/user/useUserStore";
 import {
     Exercise,
-    PhysicalRecord,
-    // PhysicalRecordParam,
+    ExercisesRecord,
+    ExercisesRecordParam,
 } from "@/types/Physical";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import usePhysicalStore from "../store/usePhysicalStore";
 
 export const useHandleExercisesRecord = () => {
-    // const { user, setIsOpenSidebar } = useUserStore();
-    // const { toggleRefetchData } = useMentalStore();
+    const { user } = useUserStore();
+    const { toggleRefetchData } = usePhysicalStore();
     const [canAddExercises, setCanAddExercises] = useState(false);
-    const form = useForm<PhysicalRecord>({
+    const form = useForm<ExercisesRecord>({
         resolver: zodResolver(exercisesSchema),
         mode: "onChange",
         defaultValues: {
@@ -28,14 +32,14 @@ export const useHandleExercisesRecord = () => {
         const currentExercises = form.getValues().exercises;
         form.setValue("exercises", [
             ...currentExercises,
-            { key: generateId(), type: "", duration: 0, intensity: "" }, // Nuevo ejercicio vacío
+            { key: generateId(), type: "", duration: 0, intensity: "" },
         ]);
         setCanAddExercises(false);
     };
 
     const handleConfirmClick = (index: number, value: Exercise) => {
         const currentExercises = form.getValues().exercises;
-        currentExercises[index] = value; // Actualiza el ejercicio en el índice correspondiente
+        currentExercises[index] = value;
         form.setValue("exercises", currentExercises);
         setCanAddExercises(true);
     };
@@ -52,28 +56,27 @@ export const useHandleExercisesRecord = () => {
                 },
             ]);
         } else {
-            currentExercises.splice(index, 1); // Elimina el ejercicio en el índice correspondiente
+            currentExercises.splice(index, 1);
             form.setValue("exercises", currentExercises);
         }
     };
 
-    // const { mutateAsync } = useMutation({
-    //     mutationFn: postMentalRecord,
-    //     onSuccess: () => {
-    //         setIsOpenSidebar(false);
-    //         toggleRefetchData();
-    //         form.reset();
-    //     },
-    //     onError: (error) => {
-    //         console.log("Mental Record failed:", error);
-    //     },
-    // });
+    const { mutateAsync } = useMutation({
+        mutationFn: postExercisesRecord,
+        onSuccess: () => {
+            toggleRefetchData();
+            form.reset();
+        },
+        onError: (error) => {
+            console.log("Mental Record failed:", error);
+        },
+    });
 
-    // const onSubmit = (data: PhysicalRecord) => {
-    // mutateAsync({ ...data, userId: user?.id } as PhysicalRecordParam);
-    // };
+    const onSubmit = (data: ExercisesRecord) => {
+        mutateAsync({ ...data, userId: user?.id } as ExercisesRecordParam);
+    };
 
-    // const handleFormSubmit = form.handleSubmit(onSubmit);
+    const handleFormSubmit = form.handleSubmit(onSubmit);
 
     const submitDisabled =
         !form.formState.isValid || form.formState.isSubmitting;
@@ -81,6 +84,7 @@ export const useHandleExercisesRecord = () => {
     return {
         form,
         submitDisabled,
+        handleFormSubmit,
         handleAddExercise,
         handleConfirmClick,
         handleRemoveClick,

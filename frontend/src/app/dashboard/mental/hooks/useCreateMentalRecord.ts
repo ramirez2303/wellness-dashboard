@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import useMentalStore from "../store/useMentalStore";
 
 export const useCreateMentalRecord = () => {
-    const { user, setIsOpenSidebar } = useUserStore();
+    const { user } = useUserStore();
     const { toggleRefetchData } = useMentalStore();
     const form = useForm<MentalRecord>({
         resolver: zodResolver(mentalSchema),
@@ -34,7 +34,6 @@ export const useCreateMentalRecord = () => {
     const { mutateAsync } = useMutation({
         mutationFn: postMentalRecord,
         onSuccess: () => {
-            setIsOpenSidebar(false);
             toggleRefetchData();
             form.reset();
         },
