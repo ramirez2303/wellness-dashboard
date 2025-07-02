@@ -15,14 +15,24 @@ import {
 
 export const useGetHabits = () => {
     const { user } = useUserStore();
-    const { refetchData, toggleRefetchData } = usePhysicalStore();
+    const { refetchData, toggleRefetchData, selectedDate } = usePhysicalStore();
     const [chartsData, setChartsData] = useState<
         HabitsChartFormatedData | undefined
     >(undefined);
 
     const { data, refetch } = useQuery<HabitsRecordResponse>({
-        queryKey: ["habitsRecords"],
-        queryFn: () => getHabitsRecord(user?.id),
+        queryKey: [
+            "habitsRecords",
+            selectedDate?.from,
+            selectedDate?.to,
+            user?.id,
+        ],
+        queryFn: () =>
+            getHabitsRecord(
+                user?.id,
+                selectedDate?.from?.toISOString(),
+                selectedDate?.to?.toISOString()
+            ),
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
         refetchOnMount: false,

@@ -9,7 +9,7 @@ type MentalPieChartProps = {
 const MentalPieChart = ({ mentalRecords }: MentalPieChartProps) => {
     const { getPieChartData, chartConfig } = useMentalPieChart();
     return (
-        <div>
+        <div className="h-full">
             <PieChart
                 title="Mental Health Mood Distribution"
                 description="January - June 2024"

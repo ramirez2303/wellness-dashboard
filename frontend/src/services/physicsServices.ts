@@ -1,4 +1,7 @@
-import { ExercisesRecordParam, HabitsRecordParam } from "@/app/dashboard/physical/types/Physical";
+import {
+    ExercisesRecordParam,
+    HabitsRecordParam,
+} from "@/app/dashboard/physical/types/Physical";
 import { api } from "@/lib/api";
 
 export const postExercisesRecord = async (data: ExercisesRecordParam) => {
@@ -6,9 +9,15 @@ export const postExercisesRecord = async (data: ExercisesRecordParam) => {
     return response.data;
 };
 
-export const getExercisesRecord = async (userId?: string) => {
+export const getExercisesRecord = async (
+    userId?: string,
+    from?: string,
+    to?: string
+) => {
     const response = await api.get(
-        `/physical/exercise${userId ? `?userId=${userId}` : ""}`
+        `/physical/exercise${userId ? `?userId=${userId}` : ""}${
+            from ? `&from=${from}` : ""
+        }${to ? `&to=${to}` : ""}`
     );
     return response.data;
 };
@@ -18,9 +27,15 @@ export const postHabitsRecord = async (data: HabitsRecordParam) => {
     return response.data;
 };
 
-export const getHabitsRecord = async (userId?: string) => {
+export const getHabitsRecord = async (
+    userId?: string,
+    from?: string,
+    to?: string
+) => {
     const response = await api.get(
-        `/physical/habits${userId ? `?userId=${userId}` : ""}`
+        `/physical/habits${userId ? `?userId=${userId}` : ""}${
+            from ? `&from=${from}` : ""
+        }${to ? `&to=${to}` : ""}`
     );
     return response.data;
 };

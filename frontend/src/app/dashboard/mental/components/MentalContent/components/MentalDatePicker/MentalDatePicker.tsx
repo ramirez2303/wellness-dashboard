@@ -3,9 +3,8 @@ import React from "react";
 
 const MentalDatePicker = () => {
     return (
-        <div className="flex flex-col w-full justify-start gap-2">
-            <DatePicker />
-            <DatePicker />
+        <div className="flex flex-col w-full justify-start">
+            {/* <DatePicker /> */}
         </div>
     );
 };
