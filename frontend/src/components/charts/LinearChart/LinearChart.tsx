@@ -1,6 +1,5 @@
 "use client";
 
-import { TrendingUp } from "lucide-react";
 import { Area, AreaChart, CartesianGrid, XAxis } from "recharts";
 
 import {
@@ -19,39 +18,28 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart";
-
-const chartData = [
-    { month: "January", desktop: 186, mobile: 80 },
-    { month: "February", desktop: 305, mobile: 200 },
-    { month: "March", desktop: 237, mobile: 120 },
-    { month: "April", desktop: 73, mobile: 190 },
-    { month: "May", desktop: 209, mobile: 130 },
-    { month: "June", desktop: 214, mobile: 140 },
-];
-
-const chartConfig = {
-    desktop: {
-        label: "Desktop",
-        color: "var(--color-custom-primary)",
-    },
-    mobile: {
-        label: "Mobile",
-        color: "var(--color-custom-accent)",
-    },
-} satisfies ChartConfig;
+import { LinearChartData } from "@/types/Charts";
 
 type LinearChartProps = {
+    title?: string;
+    description?: string;
+    chartData: LinearChartData[];
+    chartConfig: ChartConfig;
     className?: string;
 };
 
-const LinearChart = ({ className }: LinearChartProps) => {
+const LinearChart = ({
+    title,
+    description,
+    chartData,
+    chartConfig,
+    className,
+}: LinearChartProps) => {
     return (
         <Card className={className}>
             <CardHeader>
-                <CardTitle>Area Chart - Legend</CardTitle>
-                <CardDescription>
-                    Showing total visitors for the last 6 months
-                </CardDescription>
+                <CardTitle>{title}</CardTitle>
+                <CardDescription>{description}</CardDescription>
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig}>
@@ -65,7 +53,7 @@ const LinearChart = ({ className }: LinearChartProps) => {
                     >
                         <CartesianGrid vertical={false} />
                         <XAxis
-                            dataKey="month"
+                            dataKey="name"
                             tickLine={false}
                             axisLine={false}
                             tickMargin={8}
@@ -76,19 +64,11 @@ const LinearChart = ({ className }: LinearChartProps) => {
                             content={<ChartTooltipContent indicator="line" />}
                         />
                         <Area
-                            dataKey="mobile"
-                            type="natural"
-                            fill="var(--color-mobile)"
+                            dataKey="value"
+                            type="bumpX"
+                            fill="var(--color-value)"
                             fillOpacity={0.4}
-                            stroke="var(--color-mobile)"
-                            stackId="a"
-                        />
-                        <Area
-                            dataKey="desktop"
-                            type="natural"
-                            fill="var(--color-desktop)"
-                            fillOpacity={0.4}
-                            stroke="var(--color-desktop)"
+                            stroke="var(--color-value)"
                             stackId="a"
                         />
                         <ChartLegend content={<ChartLegendContent />} />
@@ -98,10 +78,10 @@ const LinearChart = ({ className }: LinearChartProps) => {
             <CardFooter>
                 <div className="flex w-full items-start gap-2 text-sm">
                     <div className="grid gap-2">
-                        <div className="flex items-center gap-2 font-medium leading-none">
+                        {/* <div className="flex items-center gap-2 font-medium leading-none">
                             Trending up by 5.2% this month{" "}
                             <TrendingUp className="h-4 w-4" />
-                        </div>
+                        </div> */}
                         <div className="flex items-center gap-2 leading-none text-muted-foreground">
                             January - June 2024
                         </div>

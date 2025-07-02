@@ -1,22 +1,21 @@
-import React from "react";
 
-import { HabitsRecord } from "@/types/Physical";
-import { Control } from "react-hook-form";
+import { HabitsRecord } from "@/app/dashboard/physical/types/Physical";
 import {
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
 } from "@/components/ui/form";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
-import { capitalizeFirstLetter } from "@/lib/utils";
 import { habitsEnergy } from "@/lib/schemas/Habits";
+import { capitalizeFirstLetter } from "@/lib/utils";
+import { Control } from "react-hook-form";
 
 type EnergyInputProps = {
     control: Control<HabitsRecord, unknown, HabitsRecord>;

@@ -1,10 +1,9 @@
-import React from "react";
-import ExercisesType from "./components/ExercisesType";
+import { Exercise } from "@/app/dashboard/physical/types/Physical";
+import ExercisesConfirm from "./components/ExercisesConfirm";
 import ExercisesDuration from "./components/ExercisesDuration";
 import ExercisesIntensity from "./components/ExercisesIntensity";
-import ExercisesConfirm from "./components/ExercisesConfirm";
+import ExercisesType from "./components/ExercisesType";
 import { useAddExercise } from "./hooks/useAddExercise";
-import { Exercise } from "@/types/Physical";
 
 type ExercisesInputProps = {
     exercise: Exercise;

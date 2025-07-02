@@ -1,13 +1,24 @@
+import {
+    HabitsChartFormatedData,
+    HabitsRecordResponse,
+} from "@/app/dashboard/physical/types/Physical";
+import { getHabitsRecord } from "@/services/physicsServices";
 import useUserStore from "@/store/user/useUserStore";
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import usePhysicalStore from "../store/usePhysicalStore";
-import { HabitsRecordResponse } from "@/types/Physical";
-import { getHabitsRecord } from "@/services/physicsServices";
-import { useEffect } from "react";
+import {
+    mapEnergyLevelsToBarChartData,
+    mapSleepHoursToBarChartData,
+    mapWaterLitersToBarChartData,
+} from "../components/HabitsView/utils/utils";
 
 export const useGetHabits = () => {
     const { user } = useUserStore();
     const { refetchData, toggleRefetchData } = usePhysicalStore();
+    const [chartsData, setChartsData] = useState<
+        HabitsChartFormatedData | undefined
+    >(undefined);
 
     const { data, refetch } = useQuery<HabitsRecordResponse>({
         queryKey: ["habitsRecords"],
@@ -27,5 +38,16 @@ export const useGetHabits = () => {
         }
     }, [refetchData, toggleRefetchData, refetch]);
 
-    return { data: data?.data };
+    useEffect(() => {
+        if (data?.data) {
+            const formattedData: HabitsChartFormatedData = {
+                sleepHours: mapSleepHoursToBarChartData(data.data),
+                waterLiters: mapWaterLitersToBarChartData(data.data),
+                energyLevels: mapEnergyLevelsToBarChartData(data.data),
+            };
+            setChartsData(formattedData);
+        }
+    }, [data]);
+
+    return { chartsData };
 };

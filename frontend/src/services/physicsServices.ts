@@ -1,5 +1,5 @@
+import { ExercisesRecordParam, HabitsRecordParam } from "@/app/dashboard/physical/types/Physical";
 import { api } from "@/lib/api";
-import { ExercisesRecordParam, HabitsRecordParam } from "@/types/Physical";
 
 export const postExercisesRecord = async (data: ExercisesRecordParam) => {
     const response = await api.post(`/physical/exercise`, data);

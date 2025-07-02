@@ -1,7 +1,6 @@
+import { ExercisesRecord } from "@/app/dashboard/physical/types/Physical";
 import Input from "@/components/common/Input";
 import { FormControl, FormField, FormItem } from "@/components/ui/form";
-import { ExercisesRecord } from "@/types/Physical";
-import React from "react";
 import { Control } from "react-hook-form";
 
 type NotesInputProps = {

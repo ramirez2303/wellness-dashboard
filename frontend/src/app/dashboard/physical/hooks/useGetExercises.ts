@@ -1,9 +1,9 @@
+import { ExercisesRecordResponse } from "@/app/dashboard/physical/types/Physical";
+import { getExercisesRecord } from "@/services/physicsServices";
 import useUserStore from "@/store/user/useUserStore";
 import { useQuery } from "@tanstack/react-query";
-import usePhysicalStore from "../store/usePhysicalStore";
-import { ExercisesRecordResponse } from "@/types/Physical";
-import { getExercisesRecord } from "@/services/physicsServices";
 import { useEffect } from "react";
+import usePhysicalStore from "../store/usePhysicalStore";
 
 export const useGetExercises = () => {
     const { user } = useUserStore();

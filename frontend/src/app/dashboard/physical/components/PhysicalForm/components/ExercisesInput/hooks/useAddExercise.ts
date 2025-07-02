@@ -1,4 +1,4 @@
-import { Exercise } from "@/types/Physical";
+import { Exercise } from "@/app/dashboard/physical/types/Physical";
 import { useState } from "react";
 
 export const useAddExercise = () => {

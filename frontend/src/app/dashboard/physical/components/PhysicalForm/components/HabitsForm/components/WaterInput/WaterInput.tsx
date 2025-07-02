@@ -1,13 +1,12 @@
-import { HabitsRecord } from "@/types/Physical";
-import React from "react";
-import { Control } from "react-hook-form";
+import { HabitsRecord } from "@/app/dashboard/physical/types/Physical";
 import {
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Control } from "react-hook-form";
 
 type WaterInputProps = {
     control: Control<HabitsRecord, unknown, HabitsRecord>;

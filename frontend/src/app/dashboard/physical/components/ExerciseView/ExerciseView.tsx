@@ -3,9 +3,9 @@
 import React from "react";
 import { useGetExercises } from "../../hooks/useGetExercises";
 
-const ExercisesTab = () => {
+const ExerciseView = () => {
     const { data } = useGetExercises();
     return <div>asd</div>;
 };
 
-export default ExercisesTab;
+export default ExerciseView;

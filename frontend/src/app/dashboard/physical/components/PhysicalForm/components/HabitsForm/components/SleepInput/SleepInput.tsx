@@ -1,12 +1,11 @@
-import React from "react";
+import { HabitsRecord } from "@/app/dashboard/physical/types/Physical";
 import {
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { HabitsRecord } from "@/types/Physical";
 import { Control } from "react-hook-form";
 
 type SleepInputProps = {

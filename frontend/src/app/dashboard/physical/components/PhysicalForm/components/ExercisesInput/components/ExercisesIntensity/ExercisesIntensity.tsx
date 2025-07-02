@@ -1,14 +1,13 @@
-import React from "react";
 
+import { Exercise } from "@/app/dashboard/physical/types/Physical";
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from "@/components/ui/select";
 import { capitalizeFirstLetter } from "@/lib/utils";
-import { Exercise } from "@/types/Physical";
 
 export const optionsIntensity = ["LOW", "MEDIUM", "HIGH"];
 

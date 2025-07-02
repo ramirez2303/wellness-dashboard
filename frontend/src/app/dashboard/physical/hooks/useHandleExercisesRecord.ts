@@ -1,12 +1,12 @@
+import {
+  Exercise,
+  ExercisesRecord,
+  ExercisesRecordParam,
+} from "@/app/dashboard/physical/types/Physical";
 import { generateId } from "@/app/utils";
 import { exercisesSchema } from "@/lib/schemas/Exercises";
 import { postExercisesRecord } from "@/services/physicsServices";
 import useUserStore from "@/store/user/useUserStore";
-import {
-    Exercise,
-    ExercisesRecord,
-    ExercisesRecordParam,
-} from "@/types/Physical";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";

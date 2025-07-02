@@ -1,7 +1,7 @@
+import { HabitsRecord, HabitsRecordParam } from "@/app/dashboard/physical/types/Physical";
 import { habitsSchema } from "@/lib/schemas/Habits";
 import { postHabitsRecord } from "@/services/physicsServices";
 import useUserStore from "@/store/user/useUserStore";
-import { HabitsRecord, HabitsRecordParam } from "@/types/Physical";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";

@@ -5,6 +5,7 @@ import {
     BarChart as BarChartComponent,
     CartesianGrid,
     XAxis,
+    YAxis,
 } from "recharts";
 
 import {
@@ -23,15 +24,12 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart";
+import { BarChartData } from "@/types/Charts";
 
 type BarChartProps = {
     title?: string;
     description?: string;
-    chartData: {
-        name: string;
-        firstValue: number;
-        secondValue: number;
-    }[];
+    chartData: BarChartData[];
     chartConfig: ChartConfig;
 };
 
@@ -41,6 +39,10 @@ const BarChart = ({
     chartData,
     chartConfig,
 }: BarChartProps) => {
+    const hasSecondValue = chartData.some(
+        (data) => data.secondValue !== undefined
+    ); // Check if any data point has a secondValue to determine if the second bar should be rendered
+
     return (
         <Card>
             <CardHeader>
@@ -51,6 +53,12 @@ const BarChart = ({
                 <ChartContainer config={chartConfig}>
                     <BarChartComponent accessibilityLayer data={chartData}>
                         <CartesianGrid vertical={false} />
+                        <YAxis
+                            dataKey="firstValue"
+                            tickLine={false}
+                            tickMargin={10}
+                            axisLine={false}
+                        />
                         <XAxis
                             dataKey="name"
                             tickLine={false}
@@ -65,14 +73,18 @@ const BarChart = ({
                             dataKey="firstValue"
                             stackId="a"
                             fill="var(--color-custom-primary)"
-                            radius={[0, 0, 4, 4]}
+                            radius={
+                                hasSecondValue ? [0, 0, 4, 4] : [4, 4, 4, 4]
+                            }
                         />
-                        <Bar
-                            dataKey="secondValue"
-                            stackId="a"
-                            fill="var(--color-custom-accent)"
-                            radius={[4, 4, 0, 0]}
-                        />
+                        {hasSecondValue && (
+                            <Bar
+                                dataKey="secondValue"
+                                stackId="a"
+                                fill="var(--color-custom-accent)"
+                                radius={[4, 4, 0, 0]}
+                            />
+                        )}
                     </BarChartComponent>
                 </ChartContainer>
             </CardContent>

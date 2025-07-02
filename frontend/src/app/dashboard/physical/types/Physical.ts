@@ -1,3 +1,5 @@
+import { BarChartData, LinearChartData } from "@/types/Charts";
+
 export interface Exercise {
     key: string;
     type: "RUN" | "BIKE" | "GYM" | "SWIM" | "YOGA" | "WALK" | "";
@@ -54,4 +56,10 @@ export interface HabitsRecordData {
 export interface HabitsRecordResponse {
     message: string;
     data: HabitsRecordData[];
+}
+
+export interface HabitsChartFormatedData {
+    waterLiters: LinearChartData[];
+    sleepHours: LinearChartData[];
+    energyLevels: BarChartData[];
 }

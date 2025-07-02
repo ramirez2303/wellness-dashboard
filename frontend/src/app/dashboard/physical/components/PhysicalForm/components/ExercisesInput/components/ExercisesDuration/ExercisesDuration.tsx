@@ -1,6 +1,5 @@
+import { Exercise } from "@/app/dashboard/physical/types/Physical";
 import { Input } from "@/components/ui/input";
-import { Exercise } from "@/types/Physical";
-import React from "react";
 
 type ExercisesDurationProps = {
     value?: Exercise["duration"];

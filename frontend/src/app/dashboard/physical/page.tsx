@@ -1,8 +1,10 @@
 import React from "react";
-import PhysicalTab from "./components/ExercisesTab";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import HabitsTab from "./components/HabitsTab";
+
+import ExerciseView from "./components/ExerciseView";
+import HabitsView from "./components/HabitsView";
+
 import PhysicalForm from "./components/PhysicalForm";
 
 const page = () => {
@@ -14,7 +16,7 @@ const page = () => {
                     <PhysicalForm />
                 </div>
             </div>
-            <Tabs defaultValue="exercises" className="w-[400px]">
+            <Tabs defaultValue="exercises">
                 <TabsList>
                     <TabsTrigger
                         value="exercises"
@@ -30,10 +32,10 @@ const page = () => {
                     </TabsTrigger>
                 </TabsList>
                 <TabsContent value="exercises">
-                    <PhysicalTab />
+                    <ExerciseView />
                 </TabsContent>
                 <TabsContent value="habits">
-                    <HabitsTab />
+                    <HabitsView />
                 </TabsContent>
             </Tabs>
         </div>
