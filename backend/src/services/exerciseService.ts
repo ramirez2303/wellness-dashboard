@@ -1,6 +1,7 @@
 import prisma from "../lib/prisma";
 import { ExercisesPropType } from "../types";
 import { calculateCaloriesBurned, generateId } from "../utils/utils";
+import { startOfDay, subDays, endOfDay } from "date-fns";
 
 export const createExerciseRecord = async (data: ExercisesPropType) => {
     const { userId, date, exercises, note } = data;
@@ -38,21 +39,25 @@ export const getExerciseRecords = async (
     from?: Date,
     to?: Date
 ) => {
+    const today = new Date();
+
+    const gte = from ? new Date(from) : startOfDay(subDays(today, 6));
+
+    const lte = to ? new Date(to) : endOfDay(today);
+
     const exerciseEntries = await prisma.exerciseRecord.findMany({
-        where: { userId },
+        where: {
+            userId,
+            createdAt: {
+                gte,
+                lte,
+            },
+        },
         orderBy: { createdAt: "desc" },
         include: {
             exercises: true,
         },
     });
-
-    if (from && to) {
-        const filtered = exerciseEntries.filter((item) => {
-            return item.date >= from && item.date <= to;
-        });
-
-        return { filtered };
-    }
 
     return { exerciseEntries };
 };

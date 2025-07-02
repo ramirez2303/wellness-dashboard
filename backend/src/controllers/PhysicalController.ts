@@ -28,7 +28,7 @@ export const getPhysicalExeciseRecord = async (req: Request, res: Response) => {
             to ? new Date(to) : undefined
         );
         res.status(200).json({
-            data: data.filtered || data.exerciseEntries,
+            data: data.exerciseEntries,
             message: "Exercise records retrieved successfully",
         });
     } catch (error) {
@@ -64,7 +64,7 @@ export const getPhysicalHabitsRecord = async (req: Request, res: Response) => {
             to ? new Date(to) : undefined
         );
         res.status(200).json({
-            data: data.filtered || data.habitsEntry,
+            data: data.habitsEntries,
             message: "Exercise records retrieved successfully",
         });
     } catch (error) {

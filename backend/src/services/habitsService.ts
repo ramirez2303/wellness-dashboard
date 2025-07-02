@@ -1,6 +1,7 @@
 import prisma from "../lib/prisma";
 import { HabitsPropType } from "../types";
 import { generateId } from "../utils/utils";
+import { startOfDay, subDays, endOfDay } from "date-fns";
 
 export const createHabitRecord = async (data: HabitsPropType) => {
     const { userId, date, sleepHours, waterLiters, energyLevel, note } = data;
@@ -28,18 +29,22 @@ export const getHabitsRecord = async (
     from?: Date,
     to?: Date
 ) => {
-    const habitsEntry = await prisma.physicalHabit.findMany({
-        where: { userId },
+    const today = new Date();
+
+    const gte = from ? new Date(from) : startOfDay(subDays(today, 6));
+
+    const lte = to ? new Date(to) : endOfDay(today);
+
+    const habitsEntries = await prisma.physicalHabit.findMany({
+        where: {
+            userId,
+            createdAt: {
+                gte,
+                lte,
+            },
+        },
         orderBy: { createdAt: "desc" },
     });
 
-    if (from && to) {
-        const filtered = habitsEntry.filter((item) => {
-            return item.date >= from && item.date <= to;
-        });
-
-        return { filtered };
-    }
-
-    return { habitsEntry };
+    return { habitsEntries };
 };
