@@ -51,13 +51,22 @@ export const useGetHabits = () => {
     useEffect(() => {
         if (data?.data) {
             const formattedData: HabitsChartFormatedData = {
-                sleepHours: mapSleepHoursToBarChartData(data.data),
-                waterLiters: mapWaterLitersToBarChartData(data.data),
-                energyLevels: mapEnergyLevelsToBarChartData(data.data),
+                sleepHours: mapSleepHoursToBarChartData(
+                    data.data,
+                    selectedDate
+                ),
+                waterLiters: mapWaterLitersToBarChartData(
+                    data.data,
+                    selectedDate
+                ),
+                energyLevels: mapEnergyLevelsToBarChartData(
+                    data.data,
+                    selectedDate
+                ),
             };
             setChartsData(formattedData);
         }
-    }, [data]);
+    }, [data, selectedDate]);
 
     return { chartsData };
 };
