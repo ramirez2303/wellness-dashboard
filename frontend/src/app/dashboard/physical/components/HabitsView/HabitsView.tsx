@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { useGetHabits } from "../../hooks/useGetHabits";
-import WaterChart from "./components/WaterChart";
-import SleepChart from "./components/SleepChart";
 import EnergyChart from "./components/EnergyChart";
+import SleepChart from "./components/SleepChart";
+import WaterChart from "./components/WaterChart";
+import { useGetHabits } from "./hooks/useGetHabits";
 
 const HabitsView = () => {
     const { chartsData } = useGetHabits();

@@ -6,12 +6,12 @@ import { getHabitsRecord } from "@/services/physicsServices";
 import useUserStore from "@/store/user/useUserStore";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import usePhysicalStore from "../store/usePhysicalStore";
 import {
     mapEnergyLevelsToBarChartData,
     mapSleepHoursToBarChartData,
     mapWaterLitersToBarChartData,
-} from "../components/HabitsView/utils/utils";
+} from "../utils";
+import usePhysicalStore from "../../../store/usePhysicalStore";
 
 export const useGetHabits = () => {
     const { user } = useUserStore();

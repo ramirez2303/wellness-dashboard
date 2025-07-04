@@ -16,17 +16,14 @@ import {
     ChartTooltip,
     ChartTooltipContent,
 } from "@/components/ui/chart";
+import { PieChartData } from "@/types/Charts";
 
 export const description = "A pie chart with a label";
 
 type PieChartProps = {
     title?: string;
     description?: string;
-    chartData: {
-        name: string;
-        value: number;
-        fill: string;
-    }[];
+    chartData: PieChartData[];
     chartConfig: ChartConfig;
 };
 

@@ -1,4 +1,4 @@
-import { BarChartData, LinearChartData } from "@/types/Charts";
+import { BarChartData, LinearChartData, PieChartData } from "@/types/Charts";
 
 export interface Exercise {
     key: string;
@@ -29,6 +29,12 @@ export interface ExercisesRecordData {
 export interface ExercisesRecordResponse {
     message: string;
     data: ExercisesRecordData[];
+}
+
+export interface ExercisesChartFormatedData {
+    caloriesBurned: BarChartData[];
+    duration: BarChartData[];
+    // type: PieChartData[];
 }
 
 export interface HabitsRecord {
