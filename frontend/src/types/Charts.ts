@@ -1,6 +1,9 @@
+export type RGB = [number, number, number];
+
+export type DataPoint = Record<string, string | number>;
+
 export type BarChartData = {
     name: string;
-    firstValue: number;
     [key: string]: number | string;
 };
 

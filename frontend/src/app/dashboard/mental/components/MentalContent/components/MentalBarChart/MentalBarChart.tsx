@@ -16,6 +16,7 @@ const MentalBarChart = ({ mentalRecords }: MentalBarChartProps) => {
                 description="January - June 2024"
                 chartData={getBarChartData(mentalRecords || [])}
                 chartConfig={chartConfig}
+                isStacked
             />
         </div>
     );

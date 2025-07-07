@@ -10,6 +10,7 @@ const EnergyChart = ({ energyLevelData }: EnergyChartProps) => {
     const chartConfig = {
         firstValue: {
             label: "Daily Energy Levels",
+            color: "var(--color-custom-primary)",
         },
     };
 

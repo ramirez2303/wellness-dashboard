@@ -10,6 +10,7 @@ const CaloriesChart = ({ caloriesBurnedData }: CaloriesChartProps) => {
     const chartConfig = {
         firstValue: {
             label: "Calories Burned",
+            color: "var(--color-custom-primary)",
         },
     };
 

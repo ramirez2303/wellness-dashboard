@@ -25,12 +25,14 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart";
 import { BarChartData } from "@/types/Charts";
+import { getNonZeroKeys } from "@/lib/charts";
 
 type BarChartProps = {
     title?: string;
     description?: string;
     chartData: BarChartData[];
     chartConfig: ChartConfig;
+    isStacked?: boolean;
 };
 
 const BarChart = ({
@@ -38,10 +40,9 @@ const BarChart = ({
     description,
     chartData,
     chartConfig,
+    isStacked = false,
 }: BarChartProps) => {
-    const hasSecondValue = chartData.some(
-        (data) => data.secondValue !== undefined
-    ); // Check if any data point has a secondValue to determine if the second bar should be rendered
+    const barsToShow = getNonZeroKeys(chartData);
 
     return (
         <Card>
@@ -51,10 +52,13 @@ const BarChart = ({
             </CardHeader>
             <CardContent>
                 <ChartContainer config={chartConfig}>
-                    <BarChartComponent accessibilityLayer data={chartData}>
+                    <BarChartComponent
+                        accessibilityLayer
+                        data={chartData}
+                        barCategoryGap={isStacked ? undefined : 0}
+                    >
                         <CartesianGrid vertical={false} />
                         <YAxis
-                            dataKey="firstValue"
                             tickLine={false}
                             tickMargin={10}
                             axisLine={false}
@@ -64,27 +68,20 @@ const BarChart = ({
                             tickLine={false}
                             tickMargin={10}
                             axisLine={false}
+                            tickFormatter={(value) => value.slice(0, 3)}
                         />
                         <ChartTooltip
                             content={<ChartTooltipContent hideLabel />}
                         />
                         <ChartLegend content={<ChartLegendContent />} />
-                        <Bar
-                            dataKey="firstValue"
-                            stackId="a"
-                            fill="var(--color-custom-primary)"
-                            radius={
-                                hasSecondValue ? [0, 0, 4, 4] : [4, 4, 4, 4]
-                            }
-                        />
-                        {hasSecondValue && (
+                        {barsToShow.map((item, ix) => (
                             <Bar
-                                dataKey="secondValue"
-                                stackId="a"
-                                fill="var(--color-custom-accent)"
-                                radius={[4, 4, 0, 0]}
+                                key={ix}
+                                dataKey={item}
+                                fill={`var(--color-${item})`}
+                                stackId={isStacked ? "a" : undefined}
                             />
-                        )}
+                        ))}
                     </BarChartComponent>
                 </ChartContainer>
             </CardContent>

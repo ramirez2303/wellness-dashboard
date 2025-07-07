@@ -1,4 +1,4 @@
-type RGB = [number, number, number];
+import { DataPoint, RGB } from "@/types/Charts";
 
 export const parseRGBString = (rgbStr: string): RGB => {
     const match = rgbStr.match(/\d+/g);
@@ -28,3 +28,18 @@ export const generateRGBGradient = (
 
     return result;
 };
+
+export function getNonZeroKeys(data: DataPoint[]): string[] {
+    const nonZeroKeys = new Set<string>();
+
+    data.forEach((entry) => {
+        Object.entries(entry).forEach(([key, value]) => {
+            // Ignora la key "name" y agrega solo si el valor es numérico y distinto de 0
+            if (key !== "name" && typeof value === "number" && value !== 0) {
+                nonZeroKeys.add(key);
+            }
+        });
+    });
+
+    return Array.from(nonZeroKeys).sort();
+}

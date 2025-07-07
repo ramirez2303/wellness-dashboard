@@ -45,33 +45,37 @@ export const useMentalBarChart = () => {
             const mood = entry.mood;
 
             if (!groupedByDate[date]) {
-            groupedByDate[date] = { positives: 0, negatives: 0 };
+                groupedByDate[date] = { positives: 0, negatives: 0 };
             }
 
             if (
-            positiveMoods.includes(mood as (typeof positiveMoods)[number])
+                positiveMoods.includes(mood as (typeof positiveMoods)[number])
             ) {
-            groupedByDate[date].positives++;
+                groupedByDate[date].positives++;
             } else if (
-            negativeMoods.includes(mood as (typeof negativeMoods)[number])
+                negativeMoods.includes(mood as (typeof negativeMoods)[number])
             ) {
-            groupedByDate[date].negatives++;
+                groupedByDate[date].negatives++;
             }
         });
 
-        return Object.entries(groupedByDate).map(([date, counts]) => ({
-            name: date,
-            firstValue: counts.positives,
-            secondValue: counts.negatives,
-        })).reverse();
+        return Object.entries(groupedByDate)
+            .map(([date, counts]) => ({
+                name: date,
+                firstValue: counts.positives,
+                secondValue: counts.negatives,
+            }))
+            .reverse();
     };
 
     const chartConfig = {
         firstValue: {
             label: "Positives",
+            color: "var(--color-custom-primary)",
         },
         secondValue: {
             label: "Negatives",
+            color: "var(--color-custom-accent)",
         },
     };
 

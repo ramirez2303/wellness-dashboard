@@ -33,7 +33,14 @@ export const mapCaloriesBurnedToBarChartData = (
     }));
 };
 
-const valueOrders = ["second", "third", "fourth", "fifth", "sixth", "seventh"];
+const valueOrders: Record<string, string> = {
+    RUN: "firstValue",
+    BIKE: "secondValue",
+    GYM: "thirdValue",
+    SWIM: "fourthValue",
+    YOGA: "fifthValue",
+    WALK: "sixthValue",
+};
 
 export const transformExercisesToStackedBarChartData = (
     data: ExercisesRecordData[],
@@ -64,24 +71,13 @@ export const transformExercisesToStackedBarChartData = (
         }
     });
 
-    // Obtener todos los tipos de ejercicios únicos para asignar valores consistentes
-    const exerciseTypes = Array.from(
-        new Set(
-            data.flatMap((record) =>
-                record.exercises.map((exercise) => exercise.type)
-            )
-        )
-    );
-
     // Transformar el objeto acumulado en un array de BarChartData
     return days.map((day) => {
-        const dayData: BarChartData = { name: day, firstValue: 0 };
+        const dayData: BarChartData = { name: day };
 
-        exerciseTypes.forEach((type, index) => {
-            const valueKey = `${
-                index === 0 ? "first" : `${valueOrders[index - 1]}`
-            }Value`;
-            dayData[valueKey] = timeByDayAndType[day][type] || 0; // Asignar tiempo acumulado o 0 si no hay datos
+        Object.entries(valueOrders).forEach(([type, valueKey]) => {
+            const value = timeByDayAndType[day][type] || 0;
+            dayData[valueKey] = value; // Asignar tiempo acumulado
         });
 
         return dayData;
