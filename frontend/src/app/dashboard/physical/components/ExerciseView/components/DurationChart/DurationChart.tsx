@@ -36,12 +36,14 @@ const DurationChart = ({ durationData }: DurationChartProps) => {
     } as ChartConfig;
 
     return (
-        <BarChart
-            title="Duration of Exercises"
-            description="Track the duration of your exercises over the last 7 days in minutes."
-            chartData={durationData || []}
-            chartConfig={chartConfig}
-        />
+        <div className="h-fit col-span-3">
+            <BarChart
+                title="Duration of Exercises"
+                description="Track the duration of your exercises over the last 7 days in minutes."
+                chartData={durationData || []}
+                chartConfig={chartConfig}
+            />
+        </div>
     );
 };
 

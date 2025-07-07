@@ -15,12 +15,14 @@ const CaloriesChart = ({ caloriesBurnedData }: CaloriesChartProps) => {
     };
 
     return (
-        <BarChart
-            title="Calories Burned"
-            description="Track your daily calories burned during exercises."
-            chartData={caloriesBurnedData || []}
-            chartConfig={chartConfig}
-        />
+        <div className="h-fit col-span-3">
+            <BarChart
+                title="Calories Burned"
+                description="Track your daily calories burned during exercises."
+                chartData={caloriesBurnedData || []}
+                chartConfig={chartConfig}
+            />
+        </div>
     );
 };
 

@@ -1,8 +1,13 @@
 import { DateRange } from "react-day-picker";
-import { Exercise, ExercisesRecordData } from "../../../types/Physical";
+import {
+    Exercise,
+    ExercisesRecordData,
+    FlattenedExercise,
+} from "../../../types/Physical";
 import { BarChartData, PieChartData } from "@/types/Charts";
 import { getDaysBetweenDates, getLastSevenDays } from "@/app/utils";
 import { generateRGBGradient } from "@/lib/charts";
+import { capitalizeFirstLetter } from "@/lib/utils";
 
 export const mapCaloriesBurnedToBarChartData = (
     data: ExercisesRecordData[],
@@ -110,8 +115,26 @@ export const mapExercisesTypeToPieChartData = (
 
     // Transformar el objeto acumulado en un array de PieChartData
     return Object.entries(typeCounts).map(([type, value], index) => ({
-        name: type,
+        name: capitalizeFirstLetter(type),
         value, // Cantidad de veces que se repite el tipo
         fill: gradientColors[index], // Asignar el color correspondiente
     }));
+};
+
+export const getFlattenExerciseRecords = (
+    records: ExercisesRecordData[]
+): FlattenedExercise[] => {
+    return records.flatMap((record) =>
+        record.exercises.map((exercise) => ({
+            userId: record.userId,
+            recordId: record.id,
+            date: record.date,
+            note: record.note,
+            caloriesBurned: record.caloriesBurned,
+            exerciseId: exercise.id ?? "unknown",
+            type: exercise.type,
+            duration: exercise.duration,
+            intensity: exercise.intensity,
+        }))
+    );
 };

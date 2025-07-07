@@ -32,6 +32,7 @@ type BarChartProps = {
     description?: string;
     chartData: BarChartData[];
     chartConfig: ChartConfig;
+    barCategoryGap?: number;
     isStacked?: boolean;
 };
 
@@ -40,6 +41,7 @@ const BarChart = ({
     description,
     chartData,
     chartConfig,
+    barCategoryGap = undefined,
     isStacked = false,
 }: BarChartProps) => {
     const barsToShow = getNonZeroKeys(chartData);
@@ -55,7 +57,7 @@ const BarChart = ({
                     <BarChartComponent
                         accessibilityLayer
                         data={chartData}
-                        barCategoryGap={isStacked ? undefined : 0}
+                        barCategoryGap={barCategoryGap}
                     >
                         <CartesianGrid vertical={false} />
                         <YAxis

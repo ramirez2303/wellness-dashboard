@@ -1,7 +1,10 @@
 import { BarChartData, LinearChartData, PieChartData } from "@/types/Charts";
 
+// EXERCISES
+
 export interface Exercise {
     key: string;
+    id?: string;
     type: "RUN" | "BIKE" | "GYM" | "SWIM" | "YOGA" | "WALK" | "";
     duration: number;
     intensity: "LOW" | "MEDIUM" | "HIGH" | "";
@@ -36,6 +39,19 @@ export interface ExercisesChartFormatedData {
     duration: BarChartData[];
     type: PieChartData[];
 }
+
+export type FlattenedExercise = {
+    recordId: string;
+    date: string;
+    note: string;
+    caloriesBurned: number;
+    exerciseId: string;
+    type: string;
+    duration: number;
+    intensity: string;
+};
+
+// HABITS
 
 export interface HabitsRecord {
     sleepHours: number;

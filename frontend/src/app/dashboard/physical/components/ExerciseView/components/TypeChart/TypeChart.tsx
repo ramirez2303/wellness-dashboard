@@ -13,7 +13,7 @@ const TypeChart = ({ typeData }: TypeChartProps) => {
         },
     };
     return (
-        <div className="h-full">
+        <div className="h-fit col-span-2">
             <PieChart
                 title="Exercise Type Distribution"
                 description="January - June 2024"

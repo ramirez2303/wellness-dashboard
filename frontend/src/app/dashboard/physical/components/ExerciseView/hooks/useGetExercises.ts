@@ -60,6 +60,7 @@ export const useGetExercises = () => {
     }, [data, selectedDate]);
 
     return {
+        data: data?.data,
         chartsData,
     };
 };
