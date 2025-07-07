@@ -34,7 +34,7 @@ export interface ExercisesRecordResponse {
 export interface ExercisesChartFormatedData {
     caloriesBurned: BarChartData[];
     duration: BarChartData[];
-    // type: PieChartData[];
+    type: PieChartData[];
 }
 
 export interface HabitsRecord {

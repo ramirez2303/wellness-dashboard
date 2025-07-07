@@ -1,7 +1,8 @@
 import { DateRange } from "react-day-picker";
 import { Exercise, ExercisesRecordData } from "../../../types/Physical";
-import { BarChartData } from "@/types/Charts";
+import { BarChartData, PieChartData } from "@/types/Charts";
 import { getDaysBetweenDates, getLastSevenDays } from "@/app/utils";
+import { generateRGBGradient } from "@/lib/charts";
 
 export const mapCaloriesBurnedToBarChartData = (
     data: ExercisesRecordData[],
@@ -82,4 +83,35 @@ export const transformExercisesToStackedBarChartData = (
 
         return dayData;
     });
+};
+
+export const mapExercisesTypeToPieChartData = (
+    data: ExercisesRecordData[]
+): PieChartData[] => {
+    // Inicializar un objeto para contar las repeticiones por tipo de ejercicio
+    const typeCounts: Record<string, number> = {};
+
+    // Iterar sobre la data y contar las repeticiones por tipo
+    data.forEach((record) => {
+        record.exercises.forEach((exercise: Exercise) => {
+            if (!typeCounts[exercise.type]) {
+                typeCounts[exercise.type] = 0;
+            }
+            typeCounts[exercise.type] += 1; // Incrementar el contador por tipo
+        });
+    });
+
+    // Generar colores para cada tipo de ejercicio
+    const gradientColors = generateRGBGradient(
+        "rgb(110 125 251)", // Color inicial del gradiente
+        "rgb(126 210 188)", // Color final del gradiente
+        Object.keys(typeCounts).length // Número de colores necesarios
+    );
+
+    // Transformar el objeto acumulado en un array de PieChartData
+    return Object.entries(typeCounts).map(([type, value], index) => ({
+        name: type,
+        value, // Cantidad de veces que se repite el tipo
+        fill: gradientColors[index], // Asignar el color correspondiente
+    }));
 };

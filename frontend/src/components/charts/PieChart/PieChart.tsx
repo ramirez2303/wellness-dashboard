@@ -49,7 +49,7 @@ const PieChart = ({
                             content={<ChartTooltipContent hideLabel />}
                         />
                         <Pie data={chartData} dataKey="value" />
-                        <ChartLegend className="-translate-y-2 flex-wrap gap-2 *:basis-1/4 *:justify-center" />
+                        <ChartLegend className="-translate-y-2 flex-wrap gap-2 *:basis-1/4 *:justify-center *:items-center" />
                     </PieChartComponent>
                 </ChartContainer>
             </CardContent>

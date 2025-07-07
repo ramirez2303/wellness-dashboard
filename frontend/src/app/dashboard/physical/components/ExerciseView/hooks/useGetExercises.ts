@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import usePhysicalStore from "../../../store/usePhysicalStore";
 import {
     mapCaloriesBurnedToBarChartData,
+    mapExercisesTypeToPieChartData,
     transformExercisesToStackedBarChartData,
 } from "../utils";
 
@@ -52,7 +53,7 @@ export const useGetExercises = () => {
             const formattedData: ExercisesChartFormatedData = {
                 caloriesBurned: mapCaloriesBurnedToBarChartData(data.data),
                 duration: transformExercisesToStackedBarChartData(data.data),
-                // type,
+                type: mapExercisesTypeToPieChartData(data.data),
             };
             setChartsData(formattedData);
         }
