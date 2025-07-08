@@ -11,19 +11,18 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { DateRange } from "react-day-picker";
-import { Mode } from "fs";
 
-type DatePickerProps = {
+type RangeDatePickerProps = {
     date?: DateRange;
     handleDateChange: (date: DateRange) => void;
-    mode?: Mode;
+    placeholder?: string;
 };
 
-const DatePicker = ({
+const RangeDatePicker = ({
     date,
     handleDateChange,
-    mode = "single",
-}: DatePickerProps) => {
+    placeholder,
+}: RangeDatePickerProps) => {
     return (
         <Popover>
             <PopoverTrigger asChild>
@@ -39,25 +38,21 @@ const DatePicker = ({
                             "PPP"
                         )}`
                     ) : (
-                        <span>Last 7 days</span>
+                        <span>{placeholder}</span>
                     )}
                 </Button>
             </PopoverTrigger>
             <PopoverContent className="w-auto p-0">
-                {mode === "single" ? (
-                    <Calendar mode="single" />
-                ) : (
-                    <Calendar
-                        mode="range"
-                        selected={date}
-                        onSelect={(date) => date && handleDateChange(date)}
-                        min={1}
-                        max={6}
-                    />
-                )}
+                <Calendar
+                    mode="range"
+                    selected={date}
+                    onSelect={(date) => date && handleDateChange(date)}
+                    min={1}
+                    max={6}
+                />
             </PopoverContent>
         </Popover>
     );
 };
 
-export default DatePicker;
+export default RangeDatePicker;

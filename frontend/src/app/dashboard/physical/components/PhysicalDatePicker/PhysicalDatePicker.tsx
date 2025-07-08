@@ -1,10 +1,10 @@
 "use client";
 
-import DatePicker from "@/components/ui/DatePicker";
 import React from "react";
 import { useRangeDatePicker } from "../../hooks/useRangeDatePicker";
 import usePhysicalStore from "../../store/usePhysicalStore";
 import { X } from "lucide-react";
+import RangeDatePicker from "@/components/ui/DatePicker/RangeDatePicker";
 
 const PhysicalDatePicker = () => {
     const { setSelectedDate } = usePhysicalStore();
@@ -12,7 +12,11 @@ const PhysicalDatePicker = () => {
         useRangeDatePicker(setSelectedDate);
     return (
         <div className="min-w-[350px] relative">
-            <DatePicker date={date} handleDateChange={handleDateChange} />
+            <RangeDatePicker
+                placeholder="Last 7 days"
+                date={date}
+                handleDateChange={handleDateChange}
+            />
             {date?.from && date?.to && (
                 <X
                     className="absolute top-[5px] right-2 w-8 h-8 text-[#555] font-regular duration-300 ease-in-out cursor-pointer rounded-full p-1"

@@ -5,11 +5,13 @@ import ExercisesInput from "../ExercisesInput";
 import { useHandleExercisesRecord } from "@/app/dashboard/physical/hooks/useHandleExercisesRecord";
 import NotesInput from "../NotesInput";
 import { Plus } from "lucide-react";
+import DateInput from "../DateInput";
 
 const ExercisesForm = () => {
     const {
         form,
         submitDisabled,
+        handleSetDate,
         handleFormSubmit,
         handleAddExercise,
         handleConfirmClick,
@@ -43,6 +45,10 @@ const ExercisesForm = () => {
                             <Plus />
                         </Button>
                     </div>
+                    <DateInput
+                        date={form.watch("date")}
+                        handleSetDate={handleSetDate}
+                    />
                     <NotesInput control={form.control} />
                 </div>
 

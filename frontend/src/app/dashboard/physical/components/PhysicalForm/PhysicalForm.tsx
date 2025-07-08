@@ -21,7 +21,7 @@ import {
     DrawerTrigger,
 } from "@/components/ui/drawer";
 import Button from "@/components/common/Button";
-import { Plus } from "lucide-react";
+import { ChevronLeft, Plus } from "lucide-react";
 import SelectPhysicalButton from "./components/SelectPhysicalButton";
 import ExercisesForm from "./components/ExercisesForm";
 import HabitsForm from "./components/HabitsForm";
@@ -110,7 +110,13 @@ const PhysicalForm = ({ children }: PhysicalFormProps) => {
             <DialogContent className="min-w-[600px] max-w-[600px]">
                 <DialogHeader className={!!typeSelected ? "visible" : "hidden"}>
                     <DialogTitle className="text-lg font-semibold">
-                        Add Physical Health Record
+                        <div className="flex items-center gap-1">
+                            <ChevronLeft
+                                className="cursor-pointer"
+                                onClick={() => setTypeSelected(null)}
+                            />
+                            Add Physical Health Record
+                        </div>
                         <DialogDescription className="text-sm font-medium text-gray-500">
                             Please select the type of physical health record you
                             want to add.

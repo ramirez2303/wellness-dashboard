@@ -21,5 +21,6 @@ export const exercisesSchema = z.object({
             intensity: z.enum(exercisesIntensity),
         })
     ),
+    date: z.string().optional(),
     note: z.string().max(500).optional(),
 });

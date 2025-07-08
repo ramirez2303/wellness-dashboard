@@ -1,7 +1,7 @@
 import {
-  Exercise,
-  ExercisesRecord,
-  ExercisesRecordParam,
+    Exercise,
+    ExercisesRecord,
+    ExercisesRecordParam,
 } from "@/app/dashboard/physical/types/Physical";
 import { generateId } from "@/app/utils";
 import { exercisesSchema } from "@/lib/schemas/Exercises";
@@ -24,9 +24,15 @@ export const useHandleExercisesRecord = () => {
             exercises: [
                 { key: generateId(), type: "", duration: 0, intensity: "" },
             ],
+            date: undefined,
             note: undefined,
         },
     });
+
+    const handleSetDate = (date: string | undefined) => {
+        form.setValue("date", date);
+        form.trigger("date");
+    };
 
     const handleAddExercise = () => {
         const currentExercises = form.getValues().exercises;
@@ -84,6 +90,7 @@ export const useHandleExercisesRecord = () => {
     return {
         form,
         submitDisabled,
+        handleSetDate,
         handleFormSubmit,
         handleAddExercise,
         handleConfirmClick,

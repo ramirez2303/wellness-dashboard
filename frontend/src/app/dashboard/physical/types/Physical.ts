@@ -12,6 +12,7 @@ export interface Exercise {
 
 export interface ExercisesRecord {
     exercises: Exercise[];
+    date?: string;
     note?: string;
 }
 
