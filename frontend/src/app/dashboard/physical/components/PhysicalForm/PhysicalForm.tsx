@@ -25,27 +25,30 @@ import { ChevronLeft, Plus } from "lucide-react";
 import SelectPhysicalButton from "./components/SelectPhysicalButton";
 import ExercisesForm from "./components/ExercisesForm";
 import HabitsForm from "./components/HabitsForm";
+import usePhysicalStore from "../../store/usePhysicalStore";
 
 type PhysicalFormProps = {
     children?: ReactNode;
 };
 
 const PhysicalForm = ({ children }: PhysicalFormProps) => {
+    const { isFormOpen, toggleFormOpen, setTabSelected } = usePhysicalStore();
     const [typeSelected, setTypeSelected] = useState<
         "exercises" | "habits" | null
     >(null);
-    const handleSelectType = (type: "exercises" | "habits") =>
+    const handleSelectType = (type: "exercises" | "habits") => {
+        setTabSelected(type);
         setTypeSelected(type);
+    };
     const isMobile = useIsMobile();
-    const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
         setTypeSelected(null);
-    }, [isOpen]);
+    }, [isFormOpen]);
 
     if (isMobile) {
         return (
-            <Drawer open={isOpen} onOpenChange={setIsOpen}>
+            <Drawer open={isFormOpen} onOpenChange={() => toggleFormOpen()}>
                 <DrawerTrigger asChild>
                     {children ? (
                         children
@@ -93,7 +96,7 @@ const PhysicalForm = ({ children }: PhysicalFormProps) => {
     }
 
     return (
-        <Dialog open={isOpen} onOpenChange={setIsOpen}>
+        <Dialog open={isFormOpen} onOpenChange={() => toggleFormOpen()}>
             <DialogTrigger asChild>
                 {children ? (
                     children

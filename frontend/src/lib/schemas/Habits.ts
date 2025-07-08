@@ -9,5 +9,6 @@ export const habitsSchema = z.object({
         .max(24, "Sleep hours cannot exceed 24"),
     waterLiters: z.number().min(0, "Water intake cannot be negative"),
     energyLevel: z.enum(habitsEnergy),
+    date: z.string().optional(),
     note: z.string().max(500).optional(),
 });

@@ -42,11 +42,11 @@ export const useGetHabits = () => {
     });
 
     useEffect(() => {
-        if (refetchData) {
+        if (data && refetchData === "habits") {
             refetch();
-            toggleRefetchData();
+            toggleRefetchData(null);
         }
-    }, [refetchData, toggleRefetchData, refetch]);
+    }, [data, refetchData, toggleRefetchData, refetch]);
 
     useEffect(() => {
         if (data?.data) {

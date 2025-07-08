@@ -15,7 +15,7 @@ import usePhysicalStore from "../store/usePhysicalStore";
 
 export const useHandleExercisesRecord = () => {
     const { user } = useUserStore();
-    const { toggleRefetchData } = usePhysicalStore();
+    const { toggleRefetchData, toggleFormOpen } = usePhysicalStore();
     const [canAddExercises, setCanAddExercises] = useState(false);
     const form = useForm<ExercisesRecord>({
         resolver: zodResolver(exercisesSchema),
@@ -29,7 +29,7 @@ export const useHandleExercisesRecord = () => {
         },
     });
 
-    const handleSetDate = (date: string | undefined) => {
+    const handleSetDate = (date?: string) => {
         form.setValue("date", date);
         form.trigger("date");
     };
@@ -70,7 +70,8 @@ export const useHandleExercisesRecord = () => {
     const { mutateAsync } = useMutation({
         mutationFn: postExercisesRecord,
         onSuccess: () => {
-            toggleRefetchData();
+            toggleRefetchData("exercises");
+            toggleFormOpen();
             form.reset();
         },
         onError: (error) => {

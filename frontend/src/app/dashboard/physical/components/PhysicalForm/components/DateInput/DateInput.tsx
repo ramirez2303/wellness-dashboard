@@ -3,7 +3,7 @@ import React from "react";
 
 type DateInputProps = {
     date?: string;
-    handleSetDate: (date: string | undefined) => void;
+    handleSetDate: (date?: string) => void;
 };
 
 const DateInput = ({ date, handleSetDate }: DateInputProps) => {

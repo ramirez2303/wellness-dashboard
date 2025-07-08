@@ -58,6 +58,7 @@ export interface HabitsRecord {
     sleepHours: number;
     waterLiters: number;
     energyLevel: "LOW" | "MEDIUM" | "HIGH";
+    date?: string;
     note?: string;
 }
 

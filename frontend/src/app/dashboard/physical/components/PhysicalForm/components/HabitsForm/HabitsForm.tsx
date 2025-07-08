@@ -6,9 +6,11 @@ import { Form } from "@/components/ui/form";
 import EnergyInput from "./components/EnergyInput";
 import WaterInput from "./components/WaterInput";
 import NotesInput from "./components/NotesInput";
+import DateInput from "../DateInput";
 
 const HabitsForm = () => {
-    const { form, handleFormSubmit, submitDisabled } = useHandleHabitsRecord();
+    const { form, handleSetDate, handleFormSubmit, submitDisabled } =
+        useHandleHabitsRecord();
 
     return (
         <Form {...form}>
@@ -19,6 +21,10 @@ const HabitsForm = () => {
                         <WaterInput control={form.control} />
                     </div>
                     <EnergyInput control={form.control} />
+                    <DateInput
+                        date={form.watch("date")}
+                        handleSetDate={handleSetDate}
+                    />
                     <NotesInput control={form.control} />
                     <Button
                         type="submit"

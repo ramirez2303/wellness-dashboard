@@ -1,12 +1,7 @@
 import React from "react";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-import ExerciseView from "./components/ExerciseView";
-import HabitsView from "./components/HabitsView";
-
 import PhysicalForm from "./components/PhysicalForm";
-import PhysicalDatePicker from "./components/PhysicalDatePicker";
+import PhysicalContent from "./components/PhysicalContent";
 
 const page = () => {
     return (
@@ -17,31 +12,7 @@ const page = () => {
                     <PhysicalForm />
                 </div>
             </div>
-            <Tabs defaultValue="exercises" className="relative z-0">
-                <div className="flex justify-between items-center mb-4">
-                    <TabsList>
-                        <TabsTrigger
-                            value="exercises"
-                            className="text-lg cursor-pointer"
-                        >
-                            Exercises
-                        </TabsTrigger>
-                        <TabsTrigger
-                            value="habits"
-                            className="text-lg cursor-pointer"
-                        >
-                            Habits
-                        </TabsTrigger>
-                    </TabsList>
-                    <PhysicalDatePicker />
-                </div>
-                <TabsContent value="exercises">
-                    <ExerciseView />
-                </TabsContent>
-                <TabsContent value="habits">
-                    <HabitsView />
-                </TabsContent>
-            </Tabs>
+            <PhysicalContent />
         </div>
     );
 };
