@@ -10,6 +10,13 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipTrigger,
+} from "@/components/ui/tooltip";
+
 import { Card } from "@/components/ui/card";
 import { ExercisesRecordData } from "@/app/dashboard/physical/types/Physical";
 import { usePagination } from "@/hooks/usePagination";
@@ -52,12 +59,26 @@ const ExercisesTable = ({ data }: ExercisesTableProps) => {
                                 {capitalizeFirstLetter(exercise.intensity)}
                             </TableCell>
                             <TableCell>{exercise.caloriesBurned}</TableCell>
-                            <TableCell
-                                className="overflow-hidden text-ellipsis"
-                                style={{ maxWidth: "120px", minWidth: "120px" }}
-                            >
-                                {capitalizeFirstLetter(exercise.note) || "-"}
-                            </TableCell>
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <TableCell
+                                        className="overflow-hidden text-ellipsis"
+                                        style={{
+                                            maxWidth: "120px",
+                                            minWidth: "120px",
+                                        }}
+                                    >
+                                        {capitalizeFirstLetter(exercise.note) ||
+                                            "-"}
+                                    </TableCell>
+                                </TooltipTrigger>
+                                <TooltipContent
+                                    side="bottom"
+                                    className="max-w-[350px]"
+                                >
+                                    {capitalizeFirstLetter(exercise.note)}
+                                </TooltipContent>
+                            </Tooltip>
                         </TableRow>
                     ))}
                 </TableBody>

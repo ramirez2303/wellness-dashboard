@@ -11,13 +11,13 @@ import PhysicalDatePicker from "./components/PhysicalDatePicker";
 const page = () => {
     return (
         <div className="p-8">
-            <div>
+            <div className="relative z-1">
                 <div className="flex justify-between items-center mb-6">
                     <h1 className="text-2xl font-semibold">Physical Health</h1>
                     <PhysicalForm />
                 </div>
             </div>
-            <Tabs defaultValue="exercises">
+            <Tabs defaultValue="exercises" className="relative z-0">
                 <div className="flex justify-between items-center mb-4">
                     <TabsList>
                         <TabsTrigger

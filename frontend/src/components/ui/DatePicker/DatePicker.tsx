@@ -33,7 +33,7 @@ const DatePicker = ({ date, handleDateChange }: DatePickerProps) => {
                             "PPP"
                         )}`
                     ) : (
-                        <span>Pick a date</span>
+                        <span>Last 7 days</span>
                     )}
                 </Button>
             </PopoverTrigger>
