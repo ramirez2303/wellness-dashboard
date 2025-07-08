@@ -38,12 +38,12 @@ export const getHabitsRecord = async (
     const habitsEntries = await prisma.physicalHabit.findMany({
         where: {
             userId,
-            createdAt: {
+            date: {
                 gte,
                 lte,
             },
         },
-        orderBy: { createdAt: "desc" },
+        orderBy: { date: "desc" },
     });
 
     return { habitsEntries };

@@ -48,12 +48,12 @@ export const getExerciseRecords = async (
     const exerciseEntries = await prisma.exerciseRecord.findMany({
         where: {
             userId,
-            createdAt: {
+            date: {
                 gte,
                 lte,
             },
         },
-        orderBy: { createdAt: "desc" },
+        orderBy: { date: "desc" },
         include: {
             exercises: true,
         },
