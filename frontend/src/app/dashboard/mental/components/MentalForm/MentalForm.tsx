@@ -104,7 +104,7 @@ const MentalForm = ({ children }: MentalFormProps) => {
                                 >
                                     Submit
                                 </Button>
-                                <DrawerClose>
+                                <DrawerClose asChild>
                                     <Button variant="none">Cancel</Button>
                                 </DrawerClose>
                             </DrawerFooter>

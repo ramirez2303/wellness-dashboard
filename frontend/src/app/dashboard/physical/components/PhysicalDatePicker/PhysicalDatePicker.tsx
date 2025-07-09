@@ -11,7 +11,7 @@ const PhysicalDatePicker = () => {
     const { date, handleDateChange, handleClearDate } =
         useRangeDatePicker(setSelectedDate);
     return (
-        <div className="min-w-[350px] relative">
+        <div className="w-full md:max-w-[350px] relative">
             <RangeDatePicker
                 placeholder="Last 7 days"
                 date={date}

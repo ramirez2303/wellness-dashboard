@@ -28,7 +28,7 @@ const ExercisesInput = ({
         !exerciseValues?.intensity;
 
     return (
-        <div className="min-w-[600px] max-w-[600px] grid grid-cols-16 items-center gap-x-4 gap-y-2">
+        <div className="md:min-w-[600px] md:max-w-[600px] grid grid-cols-6 md:grid-cols-16 items-center gap-x-4 gap-y-2">
             <ExercisesType
                 value={exercise.type ?? exerciseValues?.type}
                 handleSetValues={handleSetValues}

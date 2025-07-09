@@ -11,7 +11,7 @@ const ExercisesDuration = ({ handleSetValues }: ExercisesDurationProps) => {
         <Input
             type="number"
             placeholder="Duration"
-            className="h-[42px] border-input border border-gray-300 shadow-sm text-base rounded-lg col-span-4"
+            className="h-[42px] border-input border border-gray-300 shadow-sm text-base rounded-lg col-span-3 md:col-span-4"
             onChange={(e) =>
                 handleSetValues("duration", parseFloat(e.target.value))
             }

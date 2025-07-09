@@ -13,7 +13,7 @@ const ExercisesConfirm = ({
     handleRemove,
 }: ExercisesConfirmProps) => {
     return (
-        <div className="flex justify-start items-center gap-2 col-span-2">
+        <div className="flex justify-center md:justify-start items-center gap-2 col-span-2">
             <Check
                 className={`w-full h-full max-w-[26px] max-h-[26px] bg-green-500 hover:bg-green-500/70 text-white duration-300 ease-in-out cursor-pointer rounded-full p-1 ${
                     disableCheck

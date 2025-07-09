@@ -64,32 +64,27 @@ const PhysicalForm = ({ children }: PhysicalFormProps) => {
                 </DrawerTrigger>
                 <DrawerContent>
                     <DrawerHeader className="px-6 mt-2 mb-4 gap-1">
-                        <DrawerTitle className="text-lg font-semibold text-left">
-                            Add Mental Health Record
+                        <DrawerTitle className="text-xl font-medium text-left">
+                            <div className="flex items-center gap-1">
+                                {typeSelected && (
+                                    <ChevronLeft
+                                        className="cursor-pointer"
+                                        onClick={() => setTypeSelected(null)}
+                                    />
+                                )}
+                                Add Physical Health Record
+                            </div>
                         </DrawerTitle>
-                        <DrawerDescription className="text-sm font-medium text-gray-500 text-left">
-                            Please fill out the form below to add your mental
-                            health record.
+                        <DrawerDescription className="text-lg font-medium text-gray-500 text-left">
+                            Please select the type of physical health record you
+                            want to add.
                         </DrawerDescription>
                     </DrawerHeader>
-                    {/* <Form>
-                        <form onSubmit={() => {}}>
-                            <div className="flex flex-col gap-4 mb-6 px-6"></div>
-                            <DrawerFooter className="pt-0 px-0">
-                                <Button
-                                    type="submit"
-                                    variant="primary-filled"
-                                    className="w-full px-4 py-2 text-white hover:bg-custom-primary-90 duration-300 ease-in-out cursor-pointer"
-                                    disabled={false}
-                                >
-                                    Submit
-                                </Button>
-                                <DrawerClose>
-                                    <Button variant="none">Cancel</Button>
-                                </DrawerClose>
-                            </DrawerFooter>
-                        </form>
-                    </Form> */}
+                    {!typeSelected && (
+                        <SelectPhysicalButton onSelect={handleSelectType} />
+                    )}
+                    {typeSelected === "exercises" && <ExercisesForm />}
+                    {typeSelected === "habits" && <HabitsForm />}
                 </DrawerContent>
             </Drawer>
         );
@@ -114,10 +109,12 @@ const PhysicalForm = ({ children }: PhysicalFormProps) => {
                 <DialogHeader className={!!typeSelected ? "visible" : "hidden"}>
                     <DialogTitle className="text-lg font-semibold">
                         <div className="flex items-center gap-1">
-                            <ChevronLeft
-                                className="cursor-pointer"
-                                onClick={() => setTypeSelected(null)}
-                            />
+                            {typeSelected && (
+                                <ChevronLeft
+                                    className="cursor-pointer"
+                                    onClick={() => setTypeSelected(null)}
+                                />
+                            )}
                             Add Physical Health Record
                         </div>
                         <DialogDescription className="text-sm font-medium text-gray-500">

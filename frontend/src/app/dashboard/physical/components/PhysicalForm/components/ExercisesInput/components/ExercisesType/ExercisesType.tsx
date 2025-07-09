@@ -1,11 +1,10 @@
-
 import { Exercise } from "@/app/dashboard/physical/types/Physical";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from "@/components/ui/select";
 import { capitalizeFirstLetter } from "@/lib/utils";
 
@@ -19,7 +18,7 @@ type ExercisesTypeProps = {
 const ExercisesType = ({ handleSetValues }: ExercisesTypeProps) => {
     return (
         <Select onValueChange={(value) => handleSetValues("type", value)}>
-            <SelectTrigger className="w-full col-span-5">
+            <SelectTrigger className="w-full col-span-3 md:col-span-5">
                 <SelectValue placeholder="Exercise type" />
             </SelectTrigger>
             <SelectContent className="max-h-80">

@@ -1,11 +1,10 @@
-
 import { Exercise } from "@/app/dashboard/physical/types/Physical";
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
 } from "@/components/ui/select";
 import { capitalizeFirstLetter } from "@/lib/utils";
 
@@ -19,7 +18,7 @@ type ExercisesIntensityProps = {
 const ExercisesIntensity = ({ handleSetValues }: ExercisesIntensityProps) => {
     return (
         <Select onValueChange={(value) => handleSetValues("intensity", value)}>
-            <SelectTrigger className="w-full col-span-5">
+            <SelectTrigger className="w-full col-span-4 md:col-span-5">
                 <SelectValue placeholder="Intensity" />
             </SelectTrigger>
             <SelectContent className="max-h-80">

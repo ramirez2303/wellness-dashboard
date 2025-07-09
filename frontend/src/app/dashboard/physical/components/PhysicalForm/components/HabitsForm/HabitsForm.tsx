@@ -15,21 +15,23 @@ const HabitsForm = () => {
     return (
         <Form {...form}>
             <form onSubmit={handleFormSubmit}>
-                <div className="w-full flex flex-col gap-4">
-                    <div className="w-full grid grid-cols-2 gap-4">
-                        <SleepInput control={form.control} />
-                        <WaterInput control={form.control} />
+                <div className="w-full flex flex-col pb-4 gap-4">
+                    <div className="w-full flex flex-col px-6 gap-4">
+                        <div className="w-full grid grid-cols-2 gap-4">
+                            <SleepInput control={form.control} />
+                            <WaterInput control={form.control} />
+                        </div>
+                        <EnergyInput control={form.control} />
+                        <DateInput
+                            date={form.watch("date")}
+                            handleSetDate={handleSetDate}
+                        />
+                        <NotesInput control={form.control} />
                     </div>
-                    <EnergyInput control={form.control} />
-                    <DateInput
-                        date={form.watch("date")}
-                        handleSetDate={handleSetDate}
-                    />
-                    <NotesInput control={form.control} />
                     <Button
                         type="submit"
                         variant="primary-filled"
-                        className="w-full px-4 py-2 text-white rounded-md hover:bg-custom-primary-90 duration-300 ease-in-out cursor-pointer"
+                        className="w-full px-4 py-2 text-white md:rounded-md hover:bg-custom-primary-90 duration-300 ease-in-out cursor-pointer"
                         disabled={submitDisabled}
                     >
                         Submit

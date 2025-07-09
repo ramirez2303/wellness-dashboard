@@ -13,11 +13,13 @@ import { deleteCookie } from "cookies-next";
 import useUserStore from "@/store/user/useUserStore";
 import { redirect } from "next/navigation";
 import { usePathname } from "next/navigation";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Sidebar = () => {
     const pathname = usePathname();
     const { clearUser } = useUserStore();
     const menuItems = ["Dashboard", "Mental", "Physical", "Reports", "Profile"];
+    const isMobile = useIsMobile();
 
     const logout = () => {
         deleteCookie("token");
@@ -25,6 +27,8 @@ const Sidebar = () => {
         clearUser();
         redirect("/login");
     };
+
+    if (isMobile) return null;
 
     return (
         <SidebarComp>

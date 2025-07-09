@@ -12,7 +12,7 @@ const PhysicalContent = () => {
     const { tabSelected, setTabSelected } = usePhysicalStore();
     return (
         <Tabs defaultValue={tabSelected} className="relative z-0">
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex flex-col md:flex-row gap-4 md:gap-0 justify-start items-start md:justify-between md:items-center mb-4">
                 <TabsList>
                     <TabsTrigger
                         value="exercises"
