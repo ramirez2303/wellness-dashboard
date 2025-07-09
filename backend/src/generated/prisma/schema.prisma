@@ -27,6 +27,7 @@ model MentalState {
   mood      Mood
   note      String?
   createdAt DateTime @default(now())
+  date      DateTime @default(now())
   userId    String
 }
 

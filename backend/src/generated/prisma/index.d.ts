@@ -2357,6 +2357,7 @@ export namespace Prisma {
     mood: $Enums.Mood | null
     note: string | null
     createdAt: Date | null
+    date: Date | null
     userId: string | null
   }
 
@@ -2365,6 +2366,7 @@ export namespace Prisma {
     mood: $Enums.Mood | null
     note: string | null
     createdAt: Date | null
+    date: Date | null
     userId: string | null
   }
 
@@ -2373,6 +2375,7 @@ export namespace Prisma {
     mood: number
     note: number
     createdAt: number
+    date: number
     userId: number
     _all: number
   }
@@ -2383,6 +2386,7 @@ export namespace Prisma {
     mood?: true
     note?: true
     createdAt?: true
+    date?: true
     userId?: true
   }
 
@@ -2391,6 +2395,7 @@ export namespace Prisma {
     mood?: true
     note?: true
     createdAt?: true
+    date?: true
     userId?: true
   }
 
@@ -2399,6 +2404,7 @@ export namespace Prisma {
     mood?: true
     note?: true
     createdAt?: true
+    date?: true
     userId?: true
     _all?: true
   }
@@ -2480,6 +2486,7 @@ export namespace Prisma {
     mood: $Enums.Mood
     note: string | null
     createdAt: Date
+    date: Date
     userId: string
     _count: MentalStateCountAggregateOutputType | null
     _min: MentalStateMinAggregateOutputType | null
@@ -2505,6 +2512,7 @@ export namespace Prisma {
     mood?: boolean
     note?: boolean
     createdAt?: boolean
+    date?: boolean
     userId?: boolean
   }, ExtArgs["result"]["mentalState"]>
 
@@ -2513,6 +2521,7 @@ export namespace Prisma {
     mood?: boolean
     note?: boolean
     createdAt?: boolean
+    date?: boolean
     userId?: boolean
   }, ExtArgs["result"]["mentalState"]>
 
@@ -2521,6 +2530,7 @@ export namespace Prisma {
     mood?: boolean
     note?: boolean
     createdAt?: boolean
+    date?: boolean
     userId?: boolean
   }, ExtArgs["result"]["mentalState"]>
 
@@ -2529,10 +2539,11 @@ export namespace Prisma {
     mood?: boolean
     note?: boolean
     createdAt?: boolean
+    date?: boolean
     userId?: boolean
   }
 
-  export type MentalStateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mood" | "note" | "createdAt" | "userId", ExtArgs["result"]["mentalState"]>
+  export type MentalStateOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "mood" | "note" | "createdAt" | "date" | "userId", ExtArgs["result"]["mentalState"]>
 
   export type $MentalStatePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "MentalState"
@@ -2542,6 +2553,7 @@ export namespace Prisma {
       mood: $Enums.Mood
       note: string | null
       createdAt: Date
+      date: Date
       userId: string
     }, ExtArgs["result"]["mentalState"]>
     composites: {}
@@ -2970,6 +2982,7 @@ export namespace Prisma {
     readonly mood: FieldRef<"MentalState", 'Mood'>
     readonly note: FieldRef<"MentalState", 'String'>
     readonly createdAt: FieldRef<"MentalState", 'DateTime'>
+    readonly date: FieldRef<"MentalState", 'DateTime'>
     readonly userId: FieldRef<"MentalState", 'String'>
   }
     
@@ -6648,6 +6661,7 @@ export namespace Prisma {
     mood: 'mood',
     note: 'note',
     createdAt: 'createdAt',
+    date: 'date',
     userId: 'userId'
   };
 
@@ -6895,6 +6909,7 @@ export namespace Prisma {
     mood?: EnumMoodFilter<"MentalState"> | $Enums.Mood
     note?: StringNullableFilter<"MentalState"> | string | null
     createdAt?: DateTimeFilter<"MentalState"> | Date | string
+    date?: DateTimeFilter<"MentalState"> | Date | string
     userId?: StringFilter<"MentalState"> | string
   }
 
@@ -6903,6 +6918,7 @@ export namespace Prisma {
     mood?: SortOrder
     note?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    date?: SortOrder
     userId?: SortOrder
   }
 
@@ -6914,6 +6930,7 @@ export namespace Prisma {
     mood?: EnumMoodFilter<"MentalState"> | $Enums.Mood
     note?: StringNullableFilter<"MentalState"> | string | null
     createdAt?: DateTimeFilter<"MentalState"> | Date | string
+    date?: DateTimeFilter<"MentalState"> | Date | string
     userId?: StringFilter<"MentalState"> | string
   }, "id">
 
@@ -6922,6 +6939,7 @@ export namespace Prisma {
     mood?: SortOrder
     note?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    date?: SortOrder
     userId?: SortOrder
     _count?: MentalStateCountOrderByAggregateInput
     _max?: MentalStateMaxOrderByAggregateInput
@@ -6936,6 +6954,7 @@ export namespace Prisma {
     mood?: EnumMoodWithAggregatesFilter<"MentalState"> | $Enums.Mood
     note?: StringNullableWithAggregatesFilter<"MentalState"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"MentalState"> | Date | string
+    date?: DateTimeWithAggregatesFilter<"MentalState"> | Date | string
     userId?: StringWithAggregatesFilter<"MentalState"> | string
   }
 
@@ -7188,6 +7207,7 @@ export namespace Prisma {
     mood: $Enums.Mood
     note?: string | null
     createdAt?: Date | string
+    date?: Date | string
     userId: string
   }
 
@@ -7196,6 +7216,7 @@ export namespace Prisma {
     mood: $Enums.Mood
     note?: string | null
     createdAt?: Date | string
+    date?: Date | string
     userId: string
   }
 
@@ -7204,6 +7225,7 @@ export namespace Prisma {
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     note?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7212,6 +7234,7 @@ export namespace Prisma {
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     note?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7220,6 +7243,7 @@ export namespace Prisma {
     mood: $Enums.Mood
     note?: string | null
     createdAt?: Date | string
+    date?: Date | string
     userId: string
   }
 
@@ -7228,6 +7252,7 @@ export namespace Prisma {
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     note?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7236,6 +7261,7 @@ export namespace Prisma {
     mood?: EnumMoodFieldUpdateOperationsInput | $Enums.Mood
     note?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
     userId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -7538,6 +7564,7 @@ export namespace Prisma {
     mood?: SortOrder
     note?: SortOrder
     createdAt?: SortOrder
+    date?: SortOrder
     userId?: SortOrder
   }
 
@@ -7546,6 +7573,7 @@ export namespace Prisma {
     mood?: SortOrder
     note?: SortOrder
     createdAt?: SortOrder
+    date?: SortOrder
     userId?: SortOrder
   }
 
@@ -7554,6 +7582,7 @@ export namespace Prisma {
     mood?: SortOrder
     note?: SortOrder
     createdAt?: SortOrder
+    date?: SortOrder
     userId?: SortOrder
   }
 

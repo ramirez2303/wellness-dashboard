@@ -38,4 +38,6 @@ export const mentalSchema = z.object({
 
 export const getMentalSchema = z.object({
     userId: z.string().uuid("Invalid user ID format"),
+    from: z.string().datetime("Invalid date format").optional(),
+    to: z.string().datetime("Invalid date format").optional(),
 });

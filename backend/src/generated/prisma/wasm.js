@@ -133,6 +133,7 @@ exports.Prisma.MentalStateScalarFieldEnum = {
   mood: 'mood',
   note: 'note',
   createdAt: 'createdAt',
+  date: 'date',
   userId: 'userId'
 };
 

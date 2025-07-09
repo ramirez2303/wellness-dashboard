@@ -17,8 +17,12 @@ export const createMentalRecord = async (req: Request, res: Response) => {
 
 export const getMentalRecords = async (req: Request, res: Response) => {
     try {
-        const { userId } = req.params;
-        const data = await mentalService.getMentalRecords(userId);
+        const { userId, from, to } = req.params;
+        const data = await mentalService.getMentalRecords(
+            userId,
+            from ? new Date(from) : undefined,
+            to ? new Date(to) : undefined
+        );
         res.status(200).json({
             data: data.mentalEntries,
             message: "Mental records retrieved successfully",
