@@ -21,12 +21,7 @@ export const useGetHabits = () => {
     >(undefined);
 
     const { data, refetch } = useQuery<HabitsRecordResponse>({
-        queryKey: [
-            "habitsRecords",
-            selectedDate?.from,
-            selectedDate?.to,
-            user?.id,
-        ],
+        queryKey: ["habitsRecords", selectedDate?.to, user?.id],
         queryFn: () =>
             getHabitsRecord(
                 user?.id,

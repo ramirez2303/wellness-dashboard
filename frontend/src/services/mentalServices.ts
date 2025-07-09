@@ -6,9 +6,15 @@ export const postMentalRecord = async (data: MentalRecordParam) => {
     return response.data;
 };
 
-export const getMentalRecord = async (userId?: string) => {
+export const getMentalRecord = async (
+    userId?: string,
+    from?: string,
+    to?: string
+) => {
     const response = await api.get(
-        `/mental${userId ? `?userId=${userId}` : ""}`
+        `/mental${userId ? `?userId=${userId}` : ""}${
+            from ? `&from=${from}` : ""
+        }${to ? `&to=${to}` : ""}`
     );
     return response.data;
 };

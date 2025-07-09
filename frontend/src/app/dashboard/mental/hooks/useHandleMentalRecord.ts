@@ -7,11 +7,16 @@ import useMentalStore from "../store/useMentalStore";
 
 export const useHandleMentalRecord = () => {
     const { user } = useUserStore();
-    const { refetchData, toggleRefetchData } = useMentalStore();
+    const { refetchData, toggleRefetchData, selectedDate } = useMentalStore();
 
     const { data, refetch } = useQuery<MentalRecordResponse>({
-        queryKey: ["mentalRecords"],
-        queryFn: () => getMentalRecord(user?.id),
+        queryKey: ["mentalRecords", selectedDate?.to, user?.id],
+        queryFn: () =>
+            getMentalRecord(
+                user?.id,
+                selectedDate?.from?.toISOString(),
+                selectedDate?.to?.toISOString()
+            ),
         refetchOnWindowFocus: false,
         refetchOnReconnect: false,
         refetchOnMount: false,
