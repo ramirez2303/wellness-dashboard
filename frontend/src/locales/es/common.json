@@ -1,0 +1,33 @@
+{
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "or": "o",
+    "need": "necesitas",
+    "first_name": "Nombre",
+    "last_name": "Apellido",
+
+    "landing_title": "Rastrea tu viaje de bienestar y alcanza tus objetivos de salud",
+    "landing_subtitle": "Obtén información sobre tu estado de ánimo, sueño y hábitos, y toma el control de tu bienestar general con recomendaciones personalizadas",
+    "get_started": "Comenzar",
+
+    "home": "Inicio",
+    "about": "Acerca de",
+    "login": "Iniciar sesión",
+    "register": "Registrar",
+
+    "login_title": "Inicia sesión en tu cuenta",
+    "mail_placeholder": "Ingresa tu correo electrónico",
+    "invalid_email": "Dirección de correo electrónico inválida",
+    "password_placeholder": "Ingresa tu contraseña",
+    "password_error": "La contraseña debe tener al menos 8 caracteres",
+    "register_new_account": "Registrar una nueva cuenta",
+    "recover_password": "recuperar tu contraseña",
+
+    "register_title": "Registrar una nueva cuenta",
+    "first_name_placeholder": "Ingresa tu nombre",
+    "first_name_error": "El nombre es obligatorio",
+    "last_name_placeholder": "Ingresa tu apellido",
+    "last_name_error": "El apellido es obligatorio",
+    "already_have_account": "Ya tengo una cuenta",
+    "log_in": "Iniciar sesión"
+}

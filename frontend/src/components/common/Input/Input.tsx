@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes } from "react";
-import { FieldError } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: {
@@ -7,10 +7,11 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
         className?: string;
     };
     className?: string;
-    error?: FieldError;
+    error?: string;
 }
 
 const Input = ({ label, className, error, ...rest }: InputProps) => {
+    const { t } = useTranslation("common");
     return (
         <div className="flex flex-col w-full">
             {label?.text && (
@@ -42,7 +43,7 @@ const Input = ({ label, className, error, ...rest }: InputProps) => {
                     error ? "opacity-100" : "opacity-0"
                 }`}
             >
-                {error?.message ?? "asd"}
+                {t(error ?? "") ?? "error"}
             </span>
         </div>
     );

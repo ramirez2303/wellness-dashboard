@@ -1,0 +1,33 @@
+{
+    "email": "Email",
+    "password": "Password",
+    "or": "or",
+    "need": "need",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+
+    "landing_title": "Track your wellness journey and achieve health goals",
+    "landing_subtitle": "Gain insights into your mood, sleep, and habits , and take control of your overall well-being with personalized recommendations",
+    "get_started": "Get Started",
+
+    "home": "Home",
+    "about": "About",
+    "login": "Login",
+    "register": "Register",
+
+    "login_title": "Login to your account",
+    "mail_placeholder": "Enter your email",
+    "invalid_email": "Invalid email address",
+    "password_placeholder": "Enter your password",
+    "password_error": "Password must be at least 8 characters long",
+    "register_new_account": "Register a new account",
+    "recover_password": "recover your password",
+
+    "register_title": "Register a new account",
+    "first_name_placeholder": "Enter your first name",
+    "first_name_error": "First name is required",
+    "last_name_placeholder": "Enter your last name",
+    "last_name_error": "Last name is required",
+    "already_have_account": "I already have an account",
+    "log_in": "Log In"
+}

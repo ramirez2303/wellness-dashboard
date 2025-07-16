@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/ui/Navbar";
 import { Outfit } from "next/font/google";
 import ReactQueryProvider from "@/lib/ReactQueryProvider";
+import ClientWrapper from "./ClientWrapper";
 
 const outfit = Outfit({
     subsets: ["latin"],
@@ -21,14 +22,16 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="es">
             <body
                 suppressHydrationWarning={true}
                 className={`${outfit.variable || ""} font-outfit h-[100vh]`}
             >
                 <ReactQueryProvider>
-                    <Navbar />
-                    {children}
+                    <ClientWrapper>
+                        <Navbar />
+                        {children}
+                    </ClientWrapper>
                 </ReactQueryProvider>
             </body>
         </html>
