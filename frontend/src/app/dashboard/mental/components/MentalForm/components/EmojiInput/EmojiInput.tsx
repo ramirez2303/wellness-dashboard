@@ -19,7 +19,7 @@ import { Plus } from "lucide-react";
 
 type EmojiInputProps = {
     selectedMood: MentalStates;
-    handleButtonClick: (value?: string) => void;
+    handleMoodClick: (value?: string) => void;
     showSelect: boolean;
     toggleSelect: () => void;
 };
@@ -33,7 +33,7 @@ const emojiData = [
 
 const EmojiInput = ({
     selectedMood,
-    handleButtonClick,
+    handleMoodClick,
     showSelect,
     toggleSelect,
 }: EmojiInputProps) => {
@@ -48,7 +48,7 @@ const EmojiInput = ({
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <div
-                                onClick={() => handleButtonClick(item.value)}
+                                onClick={() => handleMoodClick(item.value)}
                                 onMouseEnter={() =>
                                     refs.current[ix]?.current?.play()
                                 }
@@ -81,7 +81,7 @@ const EmojiInput = ({
             ))}
             <div
                 onClick={() => {
-                    handleButtonClick(undefined);
+                    handleMoodClick(undefined);
                     toggleSelect();
                 }}
                 className={`cursor-pointer p-2 md:p-4 border-2 rounded-full transition-all duration-300 ease-in-out ${

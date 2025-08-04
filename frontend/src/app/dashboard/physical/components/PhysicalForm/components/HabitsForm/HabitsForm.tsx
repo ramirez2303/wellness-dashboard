@@ -1,12 +1,11 @@
-import React from "react";
-import { useHandleHabitsRecord } from "./hooks/useHandleHabitsRecord";
-import SleepInput from "./components/SleepInput";
 import Button from "@/components/common/Button";
 import { Form } from "@/components/ui/form";
+import DateInput from "@/components/common/DateInput";
 import EnergyInput from "./components/EnergyInput";
-import WaterInput from "./components/WaterInput";
 import NotesInput from "./components/NotesInput";
-import DateInput from "../DateInput";
+import SleepInput from "./components/SleepInput";
+import WaterInput from "./components/WaterInput";
+import { useHandleHabitsRecord } from "./hooks/useHandleHabitsRecord";
 
 const HabitsForm = () => {
     const { form, handleSetDate, handleFormSubmit, submitDisabled } =

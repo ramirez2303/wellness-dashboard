@@ -27,8 +27,13 @@ export const useCreateMentalRecord = () => {
 
     const selectedMood = form.watch("mood");
 
-    const handleButtonClick = (value?: string) => {
+    const handleMoodClick = (value?: string) => {
         form.setValue("mood", value as MentalRecord["mood"]);
+    };
+
+    const handleSetDate = (date?: string) => {
+        form.setValue("date", date);
+        form.trigger("date");
     };
 
     const { mutateAsync } = useMutation({
@@ -56,7 +61,8 @@ export const useCreateMentalRecord = () => {
         handleFormSubmit,
         submitDisabled,
         selectedMood,
-        handleButtonClick,
+        handleMoodClick,
+        handleSetDate,
         showSelect,
         toggleSelect,
     };

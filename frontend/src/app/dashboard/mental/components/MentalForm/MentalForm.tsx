@@ -31,6 +31,7 @@ import { useState } from "react";
 import EmojiInput from "./components/EmojiInput";
 import MoodInput from "./components/MoodInput";
 import NotesInput from "./components/NotesInput";
+import DateInput from "@/components/common/DateInput";
 
 type MentalFormProps = {
     children?: ReactNode;
@@ -42,7 +43,8 @@ const MentalForm = ({ children }: MentalFormProps) => {
         handleFormSubmit,
         submitDisabled,
         selectedMood,
-        handleButtonClick,
+        handleMoodClick,
+        handleSetDate,
         showSelect,
         toggleSelect,
     } = useCreateMentalRecord();
@@ -86,13 +88,17 @@ const MentalForm = ({ children }: MentalFormProps) => {
                             <div className="flex flex-col gap-4 mb-6 px-6">
                                 <EmojiInput
                                     selectedMood={selectedMood}
-                                    handleButtonClick={handleButtonClick}
+                                    handleMoodClick={handleMoodClick}
                                     showSelect={showSelect}
                                     toggleSelect={toggleSelect}
                                 />
                                 {showSelect && (
                                     <MoodInput control={form.control} />
                                 )}
+                                <DateInput
+                                    date={form.watch("date")}
+                                    handleSetDate={handleSetDate}
+                                />
                                 <NotesInput control={form.control} />
                             </div>
                             <DrawerFooter className="pt-0 px-0">
@@ -149,11 +155,15 @@ const MentalForm = ({ children }: MentalFormProps) => {
                         <div className="flex flex-col gap-4 mb-6">
                             <EmojiInput
                                 selectedMood={selectedMood}
-                                handleButtonClick={handleButtonClick}
+                                handleMoodClick={handleMoodClick}
                                 showSelect={showSelect}
                                 toggleSelect={toggleSelect}
                             />
                             {showSelect && <MoodInput control={form.control} />}
+                            <DateInput
+                                date={form.watch("date")}
+                                handleSetDate={handleSetDate}
+                            />
                             <NotesInput control={form.control} />
                         </div>
 

@@ -32,5 +32,6 @@ export const moodOptions = [
 
 export const mentalSchema = z.object({
     mood: z.enum(moodOptions),
+    date: z.string().optional(),
     note: z.string().max(500).optional(),
 });

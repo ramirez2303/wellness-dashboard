@@ -49,7 +49,7 @@ const MentalTable = ({ data }: MentalTableProps) => {
                     {currentData?.map((entry) => (
                         <TableRow key={entry.id}>
                             <TableCell>
-                                {new Date(entry.createdAt).toLocaleDateString()}
+                                {new Date(entry.date).toLocaleDateString()}
                             </TableCell>
                             <TableCell>
                                 {capitalizeFirstLetter(entry.mood)}

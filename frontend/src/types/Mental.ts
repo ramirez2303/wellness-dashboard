@@ -29,6 +29,7 @@ export type MentalStates =
 
 export interface MentalRecord {
     mood: MentalStates;
+    date?: string;
     note?: string;
 }
 
@@ -40,6 +41,7 @@ export interface MentalRecordData {
     id: string;
     mood: MentalStates;
     note?: string;
+    date: string;
     createdAt: string;
     updatedAt: string;
 }
@@ -47,4 +49,3 @@ export interface MentalRecordResponse {
     message: string;
     data: MentalRecordData[];
 }
-

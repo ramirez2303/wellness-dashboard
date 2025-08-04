@@ -5,7 +5,7 @@ import ExercisesInput from "../ExercisesInput";
 import { useHandleExercisesRecord } from "@/app/dashboard/physical/hooks/useHandleExercisesRecord";
 import NotesInput from "../NotesInput";
 import { Plus } from "lucide-react";
-import DateInput from "../DateInput";
+import DateInput from "@/components/common/DateInput";
 
 const ExercisesForm = () => {
     const {
