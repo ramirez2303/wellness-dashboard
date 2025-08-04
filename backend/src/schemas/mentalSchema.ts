@@ -33,6 +33,7 @@ const moodOptions = [
 export const mentalSchema = z.object({
     userId: z.string().uuid("Invalid user ID format"),
     mood: z.enum(moodOptions),
+    date: z.string().datetime("Invalid date format").optional(),
     note: z.string().max(500).optional(),
 });
 

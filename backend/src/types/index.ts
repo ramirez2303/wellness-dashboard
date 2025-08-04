@@ -54,6 +54,7 @@ export interface MentalEntry {
     userId: string;
     mood: MentalStates;
     note?: string;
+    date: string;
     createdAt: string;
 }
 

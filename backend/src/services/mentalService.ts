@@ -4,7 +4,7 @@ import { MentalPropType } from "../types";
 import { generateId } from "../utils/utils";
 
 export const createMentalRecord = async (data: MentalPropType) => {
-    const { userId, mood, note } = data;
+    const { userId, date, mood, note } = data;
 
     const mentalEntry = await prisma.mentalState.create({
         data: {
@@ -12,6 +12,9 @@ export const createMentalRecord = async (data: MentalPropType) => {
             userId,
             mood,
             note,
+            date: date
+                ? new Date(date).toISOString()
+                : new Date().toISOString(),
             createdAt: new Date().toISOString(),
         },
     });
