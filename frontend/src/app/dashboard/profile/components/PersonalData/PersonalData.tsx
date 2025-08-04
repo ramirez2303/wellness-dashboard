@@ -1,6 +1,6 @@
-import Button from "@/components/common/Button";
 import { Card } from "@/components/ui/card";
 import React from "react";
+import EditPersonalData from "../EditPersonalData";
 
 const PersonalData = () => {
     return (
@@ -15,12 +15,7 @@ const PersonalData = () => {
                     <p className="">País: {"Argentina"}</p>
                     <p className="">Fecha de registro: {"01/01/2020"}</p>
                 </div>
-                <Button
-                    variant="primary-outlined"
-                    className="top-0 right-0 absolute p-2 rounded-lg border-2 cursor-pointer hover:text-white"
-                >
-                    Editar Perfil
-                </Button>
+                <EditPersonalData />
             </div>
         </Card>
     );
