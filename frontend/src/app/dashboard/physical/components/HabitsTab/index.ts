@@ -1,1 +1,1 @@
-export { default } from "./HabitsView";
+export { default } from "../HabitsView";

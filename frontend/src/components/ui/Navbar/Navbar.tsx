@@ -7,6 +7,7 @@ import { routes } from "@/app/utils/routes";
 import IconButton from "@/components/common/IconButton";
 import { Menu } from "lucide-react";
 import useUserStore from "@/store/user/useUserStore";
+import LanguageSwitcher from "../LanguageSwitcher";
 // import Search from "./components/Search";
 
 const Navbar = () => {
@@ -31,7 +32,10 @@ const Navbar = () => {
                     </Link>
                 </div>
                 {/* <Search /> */}
-                <ActionButtons />
+                <div className="flex flex-end items-center gap-2">
+                    <ActionButtons />
+                    <LanguageSwitcher />
+                </div>
             </div>
         </header>
     );

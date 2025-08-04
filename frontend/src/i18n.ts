@@ -21,5 +21,9 @@ i18n.init({
     fallbackLng: "es",
     defaultNS: "common",
     interpolation: { escapeValue: false },
+    detection: {
+        order: ["localStorage", "navigator"],
+        caches: ["localStorage"],
+    },
 });
 export default i18n;
