@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import React from "react";
 import PersonalData from "./components/PersonalData";
+import PersonalProgress from "./components/PersonalProgress";
 
 const page = () => {
     return (
@@ -8,10 +9,7 @@ const page = () => {
             <div className="flex flex-col space-y-4 col-span-3">
                 <PersonalData />
 
-                <Card>
-                    <h3 className="text-lg font-bold">Progreso</h3>
-                    {/* <BarChart data={datosDeBienestar} /> */}
-                </Card>
+                <PersonalProgress />
 
                 <Card>
                     <h3 className="text-lg font-bold">Preferencias</h3>

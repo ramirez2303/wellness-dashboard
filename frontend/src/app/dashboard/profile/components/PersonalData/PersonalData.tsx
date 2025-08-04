@@ -6,7 +6,7 @@ const PersonalData = () => {
     return (
         <Card className="px-6">
             <div className="flex justify-start items-start flex-col relative">
-                <h2 className="text-xl font-medium">Datos Personales</h2>
+                <h3 className="text-xl font-medium">Datos Personales</h3>
                 <div className="grid grid-cols-2 justify-start items-start space-y-2 space-x-12 mt-4">
                     <p className="">Nombre: {"Rodrigo Ramirez"}</p>
                     <p className="">Email: {"rodrigo@example.com"}</p>
