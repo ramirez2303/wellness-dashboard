@@ -1,5 +1,9 @@
 import { z } from "zod";
-import { loginSchema, registerSchema } from "../schemas/authSchema";
+import {
+    editUserSchema,
+    loginSchema,
+    registerSchema,
+} from "../schemas/authSchema";
 import { mentalSchema } from "../schemas/mentalSchema";
 import { exercisesSchema } from "../schemas/exercisesSchema";
 import { habitsSchema } from "../schemas/habitsSchema";
@@ -19,6 +23,7 @@ export interface User {
 
 export type RegisterPropsType = z.infer<typeof registerSchema>;
 export type LoginPropsType = z.infer<typeof loginSchema>;
+export type EditUserPropsType = z.infer<typeof editUserSchema>;
 
 export type MentalStates =
     | "HAPPY"

@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import { signToken } from "../lib/jwt";
 import { generateId } from "../utils/utils";
 import prisma from "../lib/prisma";
-import { LoginPropsType, RegisterPropsType } from "../types";
+import { EditUserPropsType, LoginPropsType, RegisterPropsType } from "../types";
 
 export const registerUser = async (data: RegisterPropsType) => {
     const { firstname, lastname, email, password } = data;
@@ -39,6 +39,19 @@ export const loginUser = async (data: LoginPropsType) => {
     if (!valid) throw new Error("Invalid credentials");
     const { passwordHash, ...returnedUser } = user;
     return { ...returnedUser, token: signToken({ id: user.id }) };
+};
+
+export const editUser = async (data: EditUserPropsType) => {
+    const { userId, ...updateData } = data;
+    const user = await prisma.user.update({
+        where: { id: userId },
+        data: {
+            ...updateData.data,
+            updatedAt: new Date(),
+        },
+    });
+    const { passwordHash, ...filteredUser } = user;
+    return filteredUser;
 };
 
 export const getUserProfile = async (userId: string) => {
