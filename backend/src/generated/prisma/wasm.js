@@ -120,12 +120,17 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.AuthUserScalarFieldEnum = {
+exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   firstname: 'firstname',
   lastname: 'lastname',
-  passwordHash: 'passwordHash'
+  passwordHash: 'passwordHash',
+  birthdate: 'birthdate',
+  country: 'country',
+  phoneNumber: 'phoneNumber',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.MentalStateScalarFieldEnum = {
@@ -231,7 +236,7 @@ exports.IntensityLevel = exports.$Enums.IntensityLevel = {
 };
 
 exports.Prisma.ModelName = {
-  AuthUser: 'AuthUser',
+  User: 'User',
   MentalState: 'MentalState',
   PhysicalHabit: 'PhysicalHabit',
   ExerciseRecord: 'ExerciseRecord',

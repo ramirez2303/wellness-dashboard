@@ -14,12 +14,17 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model AuthUser {
+model User {
   id           String   @id @default(cuid())
   email        String   @unique
   firstname    String
   lastname     String
   passwordHash String
+  birthdate    DateTime?
+  country      String?
+  phoneNumber  Int?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now())
 }
 
 model MentalState {

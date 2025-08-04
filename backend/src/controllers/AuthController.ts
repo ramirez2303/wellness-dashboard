@@ -23,6 +23,12 @@ export const login = async (req: Request, res: Response) => {
     }
 };
 
-export const getProfile = (req: Request & { user?: User }, res: Response) => {
-    res.status(200).json({ message: "Welcome to profile", user: req.user });
+export const getProfile = async (req: Request, res: Response) => {
+    try {
+        const userId = (req as any).user.id;
+        const data = await authService.getUserProfile(userId);
+        res.status(200).json({ message: "Welcome to profile", user: data });
+    } catch (error) {
+        res.status(500).json({ error: "Failed to retrieve profile" });
+    }
 };
